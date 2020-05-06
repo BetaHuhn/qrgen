@@ -1,6 +1,7 @@
 # qrgen.cc - QR-Code generator/url-shortener
 QrGen.cc is a free service that lets you create QR-Codes and shortened URLs from any link quickly and easily
 
+![gif](qrgen.gif)
 ## Live Website
 The live version of this project can be found here: https://qrgen.cc
 
