@@ -31,7 +31,7 @@
             By
         },
         beforeMount() {
-            let {url, code} = this.$route.query
+            const {url, code} = this.$route.query
             if(url != undefined && code != undefined){
                 this.$router.replace("/")
                 this.$store.dispatch("showResult", {code, url})

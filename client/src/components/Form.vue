@@ -25,19 +25,6 @@
                 this.$store.dispatch("retrieveAPIData", {
                     url: this.url
                 })
-                /* if(validURL(this.url)){
-                    document.getElementById('input-container').classList.remove("url-invalid-shake")
-                    document.getElementById('url').classList.remove("input-invalid")
-                    this.$store.dispatch("retrieveAPIData", {
-                        url: this.url
-                    })
-                }else{
-                    document.getElementById('url').classList.add("input-invalid")
-                    document.getElementById('input-container').classList.add("url-invalid-shake")
-                    setTimeout(function() {
-                        document.getElementById('input-container').classList.remove("url-invalid-shake")
-                    },500);
-                } */
             }
         },
         computed:{

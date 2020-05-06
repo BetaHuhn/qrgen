@@ -31,17 +31,17 @@ const limit = rateLimit({
 });
 
 router.get('*', async(req, res) => {
-    var url = req.url.substr(1);
+    let url = req.url.substr(1);
     try {
-        var short = await Short.findOne({ code: url })
+        let short = await Short.findOne({ code: url })
         if(!short){
             url = await validURL(url)
             if(url){
-                var short = await Short.findOne({ url: url })
+                let short = await Short.findOne({ url: url })
                 if(!short){
                     console.log("adding short to db")
-                    var _id = new mongoose.Types.ObjectId();
-                    var query = {
+                    const _id = new mongoose.Types.ObjectId();
+                    const query = {
                         _id: _id,
                         code:  generate('123456789abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ', 5),
                         url: url,
@@ -68,7 +68,7 @@ router.get('*', async(req, res) => {
                 }
             }else{
                 console.log("not a valid code/url -> frontend")
-                var html = fs.readFileSync('./client/dist/index.html', 'utf8')
+                let html = fs.readFileSync('./client/dist/index.html', 'utf8')
                 res.send(html)
             }
         }else{
@@ -83,13 +83,13 @@ router.get('*', async(req, res) => {
 })
 
 router.post('/api/create', limit, async(req, res) => {
-    var url = await validURL(req.body.url)
+    let url = await validURL(req.body.url)
     if(url){
         try {
-            var short = await Short.findOne({ url: url })
+            let short = await Short.findOne({ url: url })
             if(!short){
-                var _id = new mongoose.Types.ObjectId();
-                var query = {
+                const _id = new mongoose.Types.ObjectId();
+                const query = {
                     _id: _id,
                     code:  generate('123456789abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ', 5),
                     url: url,

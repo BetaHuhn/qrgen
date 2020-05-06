@@ -22,15 +22,15 @@
                 this.$store.dispatch("resetState")
             },
             copy: function () {
-                var resp = document.getElementById("short").href
-                var $body = document.getElementsByTagName('body')[0]
-                var $tempInput = document.createElement('INPUT');
+                const resp = document.getElementById("short").href
+                let $body = document.getElementsByTagName('body')[0]
+                let $tempInput = document.createElement('INPUT');
                 $body.appendChild($tempInput);
                 $tempInput.setAttribute('value', resp)
                 $tempInput.select();
                 document.execCommand('copy');
                 $body.removeChild($tempInput);
-                var p = document.getElementById('copy')
+                let p = document.getElementById('copy')
                 p.innerHTML = "Copied!"
                 p.style.color = "#fff"
                 setTimeout(function() {
