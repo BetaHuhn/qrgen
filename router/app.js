@@ -133,7 +133,7 @@ router.post('/api/create', limit, async(req, res) => {
             res.json({ status: 500, response: "error" })
         }
     }else{
-        console.log(req.body.short + " is not a valid url")
+        console.log(req.body.url + " is not a valid url")
         res.json({
             status: 405,
             response: "not a valid url"
