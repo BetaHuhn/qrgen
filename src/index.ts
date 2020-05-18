@@ -9,7 +9,7 @@ dotenv.config();
 import { connectDatabase } from "./database/database";
 
 import appRouter from "./router/app";
-const middleware = require("./middleware/middleware");
+import { log } from "./middleware/middleware";
 
 app.use(express.static("client/dist"));
 app.use(express.json({ limit: "1mb" }));
@@ -22,7 +22,7 @@ var corsOptions = {
   methods: ["GET", "OPTIONS", "POST"],
 };
 app.use(cors(corsOptions));
-app.use(middleware.log());
+app.use(log());
 app.use(appRouter);
 app.use(helmet.hidePoweredBy({ setTo: "Nokia 3310" }));
 
