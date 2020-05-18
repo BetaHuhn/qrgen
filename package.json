@@ -7,6 +7,8 @@
     "serve": "cd client && npx vue-cli-service serve",
     "build": "cd client && npx vue-cli-service build",
     "start": "node index.js",
+    "server:watch": "tsc -w -p tsconfig.json",
+    "server:start": "nodemon ./build/index.js",
     "pm2": "sudo pm2 start index.js --name qrgen.cc",
     "lint": "cd client && npx vue-cli-service lint"
   },
@@ -32,6 +34,14 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
-    "@babel/node": "^7.8.7"
+    "@babel/node": "^7.8.7",
+    "@types/compression": "^1.7.0",
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.6",
+    "@types/express-rate-limit": "^5.0.0",
+    "@types/helmet": "0.0.47",
+    "@types/mongoose": "^5.7.16",
+    "@types/nanoid": "^2.1.0",
+    "nodemon": "^2.0.3"
   }
 }
