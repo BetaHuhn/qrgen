@@ -4,8 +4,8 @@ import mongoose from "mongoose";
 import fs from "fs";
 import rateLimit from "express-rate-limit";
 import generate from "nanoid";
-const validURL = require("../utils/validUrl");
-const currentDate = require("../utils/currentDate");
+import validUrl from "../utils/validUrl";
+import currentDate from "../utils/currentDate";
 const router = express.Router();
 
 const limit = rateLimit({
@@ -26,17 +26,15 @@ const limit = rateLimit({
       },
     });
   },
-  // TODO: seems to not exist?
-  // draft_polli_ratelimit_headers: true,
   headers: true,
 });
 
 router.get("*", async (req, res) => {
-  let url = req.url.substr(1);
+  let reqUrl = req.url.substr(1);
   try {
-    let short = await Short.findOne({ code: url });
+    let short = await Short.findOne({ code: reqUrl });
     if (!short) {
-      url = await validURL(url);
+      let url = await validUrl(reqUrl);
       if (url) {
         let short = await Short.findOne({ url: url });
         if (!short) {
@@ -94,7 +92,8 @@ router.get("*", async (req, res) => {
 });
 
 router.post("/api/create", limit, async (req, res) => {
-  let url = await validURL(req.body.url);
+  console.log("test")
+  let url = await validUrl(req.body.url);
   if (url) {
     try {
       let short = await Short.findOne({ url: url });

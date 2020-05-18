@@ -1,16 +1,16 @@
 {
   "name": "qrgen",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "QrGen.cc is a free service that lets you create QR-Codes and shortened URLs from any link quickly and easily",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
-    "serve": "cd client && npx vue-cli-service serve",
-    "build": "cd client && npx vue-cli-service build",
-    "start": "node index.js",
+    "client:serve": "cd client && npx vue-cli-service serve",
+    "client:build": "cd client && npx vue-cli-service build",
+    "client:lint": "cd client && npx vue-cli-service lint",
     "server:watch": "tsc -w -p tsconfig.json",
+    "server:build": "tsc -p tsconfig.json",
     "server:start": "nodemon ./build/index.js",
-    "pm2": "sudo pm2 start index.js --name qrgen.cc",
-    "lint": "cd client && npx vue-cli-service lint"
+    "pm2": "sudo pm2 start ./build/index.js --name qrgen.cc"
   },
   "author": "Maximilian Schiller",
   "repository": {
