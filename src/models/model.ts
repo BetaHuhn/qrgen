@@ -1,7 +1,14 @@
-let mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+import mongoose, { Document, Schema } from "mongoose";
 
-let schema = new mongoose.Schema({
+export interface IShort extends Document {
+  _id: string;
+  code: string;
+  url: string;
+  count: number;
+  createdOn: number;
+}
+
+const shortSchema: Schema = new mongoose.Schema({
   _id: Schema.Types.ObjectId,
   code: {
     type: String,
@@ -16,14 +23,10 @@ let schema = new mongoose.Schema({
   count: {
     type: Number,
   },
-  addedAt: {
-    type: Date,
+  createdOn: {
+    type: Number,
     required: true,
   },
 });
 
-schema.methods.increase = function () {
-  this.count += 1;
-};
-
-export default mongoose.model("Short", schema);
+export default mongoose.model<IShort>("Short", shortSchema);

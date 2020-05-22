@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import log from "../utils/log";
 
-const server = "127.0.0.1:27017";
+const server = process.env.DB_ADDRESS || "localhost:27017";
 const database = process.env.DB;
 const options = {
   user: process.env.DB_USERNAME,
@@ -16,7 +17,7 @@ export async function connectDatabase() {
   await mongoose
     .connect(url, options)
     .then(() => {
-      console.log("Database connection successfull: " + database);
+      log.log("Database connection successfull: " + database);
       return mongoose;
     })
     .catch((err) => {
@@ -24,6 +25,6 @@ export async function connectDatabase() {
     });
 
   mongoose.connection.on("error", (err) => {
-    console.error(err);
+    log.error(err);
   });
 }
