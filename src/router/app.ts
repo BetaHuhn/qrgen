@@ -1,11 +1,10 @@
 import express from "express";
-import Short from "../models/model.js";
+import Short, { IShort } from "../models/model.js";
 import mongoose from "mongoose";
 import fs from "fs";
 import rateLimit from "express-rate-limit";
 import generate from "nanoid";
 import validUrl from "../utils/validUrl";
-import currentDate from "../utils/currentDate";
 const router = express.Router();
 
 const limit = rateLimit({
@@ -45,12 +44,11 @@ router.get("*", async (req, res) => {
             // TODO: enter length of generated code
             code: generate(5),
             url,
-            addedAt: currentDate(),
+            addedAt: +new Date(),
           };
           try {
             let short = new Short(query);
-            // TODO: remove any
-            short.save(async function (err: any, doc: any) {
+            short.save(async function (err: any, doc: IShort) {
               if (err) {
                 console.error(err);
                 res.json({ status: "400", type: "error" });
@@ -92,7 +90,6 @@ router.get("*", async (req, res) => {
 });
 
 router.post("/api/create", limit, async (req, res) => {
-  console.log("test")
   let url = await validUrl(req.body.url);
   if (url) {
     try {
@@ -104,12 +101,11 @@ router.post("/api/create", limit, async (req, res) => {
           // TODO: enter length of generated code
           code: generate(5),
           url,
-          addedAt: currentDate(),
+          addedAt: +new Date(),
         };
         try {
           let short = new Short(query);
-          // TODO: remove any
-          short.save(async function (err: any, doc: any) {
+          short.save(async function (err: any, doc: IShort) {
             if (err) {
               console.error(err);
               res.json({ status: "400", type: "error" });
