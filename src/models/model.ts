@@ -6,7 +6,6 @@ export interface IShort extends Document {
   url: string;
   count: number;
   createdOn: number;
-  increase: Function;
 }
 
 const shortSchema: Schema = new mongoose.Schema({
@@ -29,9 +28,5 @@ const shortSchema: Schema = new mongoose.Schema({
     required: true,
   },
 });
-
-shortSchema.methods.increase = function () {
-  this.count += 1;
-};
 
 export default mongoose.model<IShort>("Short", shortSchema);
