@@ -7,10 +7,12 @@ import helmet from "helmet";
 import dotenv from "dotenv";
 dotenv.config();
 import { connectDatabase } from "./database/database";
+import morgan from "morgan";
+import log from "./utils/log";
 
 import appRouter from "./router/app";
-import { log } from "./middleware/middleware";
 
+app.use(morgan("tiny"));
 app.use(express.static("client/dist"));
 app.use(express.json({ limit: "1mb" }));
 app.use(bodyParser.json());
@@ -22,7 +24,6 @@ var corsOptions = {
   methods: ["GET", "OPTIONS", "POST"],
 };
 app.use(cors(corsOptions));
-app.use(log());
 app.use(appRouter);
 app.use(helmet.hidePoweredBy({ setTo: "Nokia 3310" }));
 
@@ -33,10 +34,10 @@ async function startServer() {
   try {
     await connectDatabase();
     const PORT = process.env.PORT || 3000;
-    app.listen(PORT, () => console.log("listening on port " + PORT));
+    app.listen(PORT, () => log.log("listening on port " + PORT));
   } catch (error) {
-    console.log("Server setup failed");
-    console.log(error);
+    log.error("Server setup failed. Wrong server IP or authentication?");
+    log.error(error);
     process.exit(1);
   }
 }
