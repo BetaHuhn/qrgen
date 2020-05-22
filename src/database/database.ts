@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const server = "127.0.0.1:27017";
+const server = process.env.DB_ADDRESS || "localhost:27017";
 const database = process.env.DB;
 const options = {
   user: process.env.DB_USERNAME,
