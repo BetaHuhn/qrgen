@@ -69,6 +69,10 @@ cd ..
 npm run start
 ```
 
-## About
+## Authors
+* **Maximilian Schiller** ([@BetaHuhn](https://github.com/BetaHuhn)) - *Initial work*
+* **Alexander Janke** ([@alexanderjanke](https://github.com/alexanderjanke)) - *Typescript*
 
-By [Maximilian Schiller](https://github.com/BetaHuhn)
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
