@@ -8,11 +8,10 @@ const routes = [
     path: '/',
     name: 'Home',
     component: () => import("@/views/Home"),
-    props: (route) => ({
-      chartType: route.query.chartType ?? "cases",
-      activeStates: route.query.activeStates ?? ""
-    }),
-    meta: { scrollToTop: true }
+    meta: { 
+      checkPath: false,
+      scrollToTop: true 
+    }
   },
   {
     path: '/privacy',
@@ -28,10 +27,13 @@ const routes = [
   },
   {
     path: '*',
-    name: '404',
-    component: () => import("@/views/404.vue"),
-    meta: { scrollToTop: true }
-  },
+    name: 'Home',
+    component: () => import("@/views/Home.vue"),
+    meta: { 
+      checkPath: true,
+      scrollToTop: true 
+    }
+  }
 ]
 
 const scrollBehavior = (to, from, savedPosition) => {

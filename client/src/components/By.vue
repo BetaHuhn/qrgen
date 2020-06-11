@@ -10,7 +10,7 @@
   }
 </script>
 
-<style scope>
+<style scoped>
   .by{
     text-align: center;
     position: fixed;
