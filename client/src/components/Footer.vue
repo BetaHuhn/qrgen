@@ -21,7 +21,7 @@
  }
 </script>
 
-<style scope>
+<style scoped>
  footer{
   width: 100%;
   background-color: #191c1c;
