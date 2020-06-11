@@ -1,14 +1,21 @@
 <template>
-    <div id="home">
-        <main>
-            <div class="content">
-                <Result v-if="showResult" />
-                <Form v-else />
-            </div>
-            <By />
-        </main>
-        <Footer />
-    </div>
+        <NotFound v-if="show == 'notFound'" />
+        <div v-else id="home">
+            <main>
+                <div class="content">
+                    <Result v-if="show == 'result'" />
+                    <Form v-if="show == 'normal'" />
+                    <div v-if="show == 'redirect'">
+                        <h1>Redirecting...</h1>
+                    </div>
+                    <div v-if="show == 'loading'">
+                        <h1>Loading...</h1>
+                    </div>
+                </div>
+                <By />
+            </main>
+            <Footer />
+        </div>
 </template>
 
 <script>
@@ -16,31 +23,52 @@
     import Form from '@/components/Form'
     import Footer from '@/components/Footer'
     import By from '@/components/By'
+    import NotFound from '@/views/404'
 
     export default {
         name: 'App',
         computed: {
-            showResult: function () {
-                return this.$store.state.showResult
+            show: function () {
+                return this.$store.state.show
+            }
+        },
+        methods: {
+            validURL: function(value){
+                const expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi
+                const regexp = new RegExp(expression);
+                return regexp.test(value);
             },
+            withHttp: function(url){
+                if(!url.startsWith("http") && !url.startsWith("file") && !url.startsWith("ftp")){
+                    return "https://" + url;
+                }
+                return url
+            }
         },
         components: {
             Result,
             Form,
             Footer,
-            By
+            By,
+            NotFound
         },
-        beforeMount() {
-            const {url, code} = this.$route.query
-            if(url != undefined && code != undefined){
-                this.$router.replace("/")
-                this.$store.dispatch("showResult", {code, url})
+        created: function () {
+            if(this.$route.meta.checkPath === true){
+                const route = this.$route.fullPath.substr(1);
+                const url = this.withHttp(route);
+                if(this.validURL(url)){
+                    this.$store.dispatch("retrieveAPIData", url);
+                }else if(route.length === 5){
+                    return this.$store.dispatch("getFromCode", route);
+                }else{
+                    this.$store.commit("display404");
+                }
             }
         },
     }
 </script>
 
-<style lang="scss">
+<style scoped>
     #home {
         height: 100%;
     }

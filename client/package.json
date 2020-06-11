@@ -1,6 +1,6 @@
 {
   "name": "qrgen.cc",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "qrcode": "^1.4.4",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
     "vue-qrcode": "^0.3.3",
@@ -42,7 +43,9 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-useless-escape": "off"
+    }
   },
   "browserslist": [
     "> 1%",

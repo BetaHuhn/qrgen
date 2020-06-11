@@ -22,9 +22,23 @@
         name: 'Form',
         methods: {
             render: function () {
-                this.$store.dispatch("retrieveAPIData", {
-                    url: this.url
-                })
+                const url = this.withHttp(this.url);
+                if(this.validURL(url)){
+                    this.$store.dispatch("retrieveAPIData", url);
+                }else{
+                    this.$store.commit("inputInvalid");
+                }
+            },
+            validURL: function(value){
+                const expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi
+                const regexp = new RegExp(expression);
+                return regexp.test(value);
+            },
+            withHttp: function(url){
+                if(!url.startsWith("http") && !url.startsWith("file") && !url.startsWith("ftp")){
+                    return "https://" + url;
+                }
+                return url
             }
         },
         computed:{
@@ -56,7 +70,7 @@
     }
 </script>
 
-<style scope>
+<style scoped>
     .description {
         margin: auto;
     }

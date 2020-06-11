@@ -1,20 +1,23 @@
 import express from "express";
 import Short from "../models/model.js";
 import mongoose from "mongoose";
-import fs from "fs";
 import rateLimit from "express-rate-limit";
 import generate from "nanoid";
-import validUrl from "../utils/validUrl";
-import currentDate from "../utils/currentDate";
+import yxc, { connect } from "@dotvirus/yxc";
+import { Regex } from "../utils/regex";
+import { sendResult } from "../middleware/middleware";
+import status from "../utils/status";
+import log from "../utils/log";
+import fs from "fs";
 const router = express.Router();
 
 const limit = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 200,
-  handler: function (req: express.Request, res: express.Response /*next*/) {
-    console.log(req.ip + " has exceeded rate limit");
-    res.status(429).send({
-      status: 429,
+  handler: function (req: express.Request, res: express.Response) {
+    log.log(`${req.ip} has exceeded rate limit`);
+    res.status(status.TOO_MANY_REQUESTS).send({
+      status: status.TOO_MANY_REQUESTS,
       type: "error",
       response: "rate limit exceeded",
       error: {
@@ -29,132 +32,94 @@ const limit = rateLimit({
   headers: true,
 });
 
-router.get("*", async (req, res) => {
-  let reqUrl = req.url.substr(1);
-  try {
-    let short = await Short.findOne({ code: reqUrl });
-    if (!short) {
-      let url = await validUrl(reqUrl);
-      if (url) {
-        let short = await Short.findOne({ url: url });
-        if (!short) {
-          console.log("adding short to db");
-          const _id = new mongoose.Types.ObjectId();
-          const query = {
-            _id,
-            // TODO: enter length of generated code
-            code: generate(5),
-            url,
-            addedAt: currentDate(),
-          };
-          try {
-            let short = new Short(query);
-            // TODO: remove any
-            short.save(async function (err: any, doc: any) {
-              if (err) {
-                console.error(err);
-                res.json({ status: "400", type: "error" });
-              } else {
-                console.log("Short added as: " + doc._id);
-                res.redirect("/?code=" + doc.code + "&url=" + doc.url);
-              }
-            });
-          } catch (error) {
-            console.error(error);
-            res.json({ status: "400", type: "error" });
-          }
-        } else {
-          console.log(
-            "short: " +
-              short.code +
-              " url: " +
-              short.url +
-              " already in db -> frontend"
-          );
-          res.redirect("/?code=" + short.code + "&url=" + short.url);
-        }
-      } else {
-        console.log("not a valid code/url -> frontend");
-        let html = fs.readFileSync("./client/dist/index.html", "utf8");
-        res.send(html);
-      }
-    } else {
-      console.log(
-        "short: " + short.code + " found -> redirecting to " + short.url
-      );
-      short.increase();
-      res.redirect(short.url);
-    }
-  } catch (error) {
-    console.error(error);
-    res.json({ status: 500, response: "error" });
-  }
-});
-
-router.post("/api/create", limit, async (req, res) => {
-  console.log("test")
-  let url = await validUrl(req.body.url);
-  if (url) {
+router.get(
+  "/api/",
+  connect({
+    query: yxc.object({
+      code: yxc.string().notEmpty(),
+    }),
+  }),
+  async (req, res, next) => {
+    const code = <string>req.query.code;
     try {
-      let short = await Short.findOne({ url: url });
-      if (!short) {
-        const _id = new mongoose.Types.ObjectId();
-        const query = {
-          _id,
-          // TODO: enter length of generated code
-          code: generate(5),
-          url,
-          addedAt: currentDate(),
-        };
-        try {
-          let short = new Short(query);
-          // TODO: remove any
-          short.save(async function (err: any, doc: any) {
-            if (err) {
-              console.error(err);
-              res.json({ status: "400", type: "error" });
-            } else {
-              console.log(
-                "Short added, code: " + doc.code + " url: " + doc.url
-              );
-              res.json({
-                status: "200",
-                response: "success",
-                data: {
-                  code: doc.code,
-                  url: doc.url,
-                },
-              });
-            }
-          });
-        } catch (error) {
-          console.error(error);
-          res.json({ status: "400", type: "error" });
-        }
-      } else {
-        console.log(
-          "Short already in db, code: " + short.code + " url: " + short.url
-        );
-        res.json({
-          status: 200,
-          response: "success",
-          data: {
-            code: short.code,
-            url: short.url,
+      log.log(`Checking if short "${code}" exists...`);
+      let short = await Short.findOne({ code: code });
+      if (short) {
+        log.log(`short with code ${short.code} found. Updating counter...`);
+        await short.updateOne({
+          $inc: {
+            count: 1,
           },
         });
+
+        log.log(`Redirecting to ${short.url}...`);
+        return sendResult(res, {
+          code: short.code,
+          url: short.url,
+        }, 200);
       }
+
+      log.log("No short found");
+      sendResult(res, status.NOT_FOUND, 404);
     } catch (error) {
-      console.error(error);
-      res.json({ status: 500, response: "error" });
+      log.error(error);
+      next(error);
     }
-  } else {
-    console.log(req.body.url + " is not a valid url");
-    res.json({
-      status: 405,
-      response: "not a valid url",
-    });
   }
-});
+);
+
+router.post(
+  "/api/create",
+  limit,
+  connect({
+    body: yxc.object({
+      url: yxc.string().regex(Regex.url),
+    }),
+  }),
+  async (req, res, next) => {
+    try {
+      const url: string = req.body.url;
+      log.log(`Checking if "${url}" exists...`);
+      const entry = await Short.findOne({ url: url });
+
+      if (entry) {
+        log.log("Entry already exists");
+        return sendResult(res, {
+          code: entry.code,
+          url: entry.url,
+        }, 200);
+      }
+
+      log.log("No entry found. Creating new one...");
+      const query = {
+        _id: new mongoose.Types.ObjectId(),
+        code: generate(5),
+        count: 0,
+        url,
+        addedAt: +new Date(),
+      };
+
+      log.log("Defining new mongoose-short...");
+      const short = new Short(query);
+
+      log.log("Saving short in database...");
+      const createdShort = await short.save();
+
+      sendResult(res, {
+        code: createdShort.code,
+        url: createdShort.url,
+      }, 200);
+    } catch (error) {
+      log.error(error);
+      next(error);
+    }
+  }
+);
+
+/* Needed to get Vue.js Frontend to work properly */
+router.get("*", async (req, res) => {
+  let html = fs.readFileSync("./client/dist/index.html", "utf8");
+  res.send(html);
+})
 
 export default router;
