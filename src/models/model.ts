@@ -5,7 +5,7 @@ export interface IShort extends Document {
   code: string;
   url: string;
   count: number;
-  createdOn: number;
+  addedAt: number;
 }
 
 const shortSchema: Schema = new mongoose.Schema({
@@ -23,7 +23,7 @@ const shortSchema: Schema = new mongoose.Schema({
   count: {
     type: Number,
   },
-  createdOn: {
+  addedAt: {
     type: Number,
     required: true,
   },

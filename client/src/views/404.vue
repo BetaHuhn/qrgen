@@ -29,7 +29,7 @@
     import By from '@/components/By'
 
     export default {
-        name: 'App',
+        name: '404',
         components: {
             Footer,
             By
@@ -37,7 +37,7 @@
     }
 </script>
 
-<style lang="scss">
+<style scoped>
     #error {
         height: 100%;
     }

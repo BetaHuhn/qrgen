@@ -1,12 +1,13 @@
 {
   "name": "qrgen",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "QrGen.cc is a free service that lets you create QR-Codes and shortened URLs from any link quickly and easily",
   "main": "build/index.js",
   "scripts": {
     "client:serve": "cd client && npx vue-cli-service serve",
     "client:build": "cd client && npx vue-cli-service build",
     "client:lint": "cd client && npx vue-cli-service lint",
+    "server:dev": "./node_modules/.bin/tsc-watch --onSuccess \"sudo DEBUG=server:* nodemon ./build/index.js\"",
     "server:watch": "tsc -w -p tsconfig.json",
     "server:build": "tsc -p tsconfig.json",
     "server:start": "cross-env DEBUG=server:* nodemon ./build/index.js",
@@ -48,6 +49,8 @@
     "@types/morgan": "^1.9.0",
     "@types/nanoid": "^2.1.0",
     "cross-env": "^7.0.2",
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.3",
+    "tsc-watch": "^4.2.8",
+    "typescript": "^3.9.5"
   }
 }

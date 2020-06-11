@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 function defaultState () {
   return {
-    showResult: false,
+    show: "normal",
     code: "",
     url: "",
     inputInvalid: false,
@@ -24,15 +24,23 @@ export default new Vuex.Store({
     setResponse (state, data) {
       state.code = data.code
       state.url = data.url
-      state.showResult = true
+      state.show = "result";
     },
-    displayError (state, res) {
-      if(res.status == 405){
-        state.inputInvalid = true;
-      }else{
+    displayRedirect(state){
+      state.show = "redirect";
+    },
+    displayLoading(state){
+      state.show = "loading";
+    },
+    inputInvalid(state){
+      state.inputInvalid = true;
+    },
+    display404 (state) {
+      state.show = "notFound";
+    },
+    displayError (state, response) {
         state.error = true;
-        state.errorMsg = (res.response != undefined ) ? "Error: " + res.response : defaultState().errorMsg
-      }
+        state.errorMsg = (response != undefined ) ? "Error: " + response : defaultState().errorMsg
     },
     removeError (){
       state.error = false;
@@ -44,23 +52,67 @@ export default new Vuex.Store({
     }
   },
   actions:{
-    async retrieveAPIData (context) {
-      const api = "https://qrgen.cc/api/create"
+    async retrieveAPIData ({ commit }, url) {
+      commit("displayLoading");
+      const api = "/api/create"
       const options = {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ url: context.state.url })
+          body: JSON.stringify({ url: url })
       };
-      const res = await (await fetch(api, options)).json()
-      if(res.status == 200){
-        context.commit("removeError")
-        context.commit("setResponse", {code: res.data.code, url: res.data.url})
-      }else{
-        console.log(res)
-        context.commit("displayError", res)
-      }
+      fetch(api, options)
+        .then( response => {
+          if (!response.ok) { throw response }
+          return response.json()
+        })
+        .then( json => {
+          if(json.status === 200){
+            commit("removeError")
+            commit("setResponse", {code: json.result.code, url: json.result.url})
+          }
+        })
+        .catch( err => {
+          if (err.text) {
+            err.text().then( errorMessage => {
+              commit("displayError", errorMessage)
+            })
+          } else {
+            commit("displayError")
+          }
+        })
+    },
+    async getFromCode ({ commit }, code) {
+      commit("displayRedirect");
+      const api = "/api?code=" + code;
+      const options = {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      };
+      fetch(api, options)
+        .then( response => {
+          if (!response.ok) { throw response }
+          return response.json()
+        })
+        .then( json => {
+          if(json.status == 200){
+            window.location.replace(json.result.url);
+          }else if(json.result == 404){
+            commit("display404")
+          }
+        })
+        .catch( err => {
+          if (err.text) {
+            err.text().then( errorMessage => {
+              commit("displayError", errorMessage)
+            })
+          } else {
+            commit("displayError")
+          }
+        })
     },
     changeUrl( { state }, newUrl){
       state.url = newUrl;
