@@ -36,10 +36,7 @@ nano .env
 Add:
 
 ```
-DB=Your MongoDB database name
-DB_ADDRESS=MongoDB IP:Port; defaults to localhost:27017
-DB_USERNAME=Your username to sign into MongoDB
-DB_PASSWORD=Password to sign in
+DB_CONNECTION_STRING=Your MongoDB connection string; defaults to mongodb://localhost:27017/qrgen
 PORT=Port the server runs on; defaults to 3000
 ```
 

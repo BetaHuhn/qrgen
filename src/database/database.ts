@@ -7,7 +7,7 @@ const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
-const url = <string> process.env.DB_CONNECTION_STRING;
+const url = <string> process.env.DB_CONNECTION_STRING || "mongodb://localhost:27017/qrgen";
 
 export async function connectDatabase() {
   await mongoose
