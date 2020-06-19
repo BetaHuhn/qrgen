@@ -13,6 +13,9 @@ The live version of this project can be found here: https://qrgen.cc
 This repo contains the source code for the [qrgen.cc](https://qrgen.cc) QR-Code generator/url-shortener. Just add qrgen.cc/ infront of a url and get a QR-Code aswell as a short url. Alternatively you can visit [qrgen.cc](https://qrgen.cc) and create them manually.
 The website is build with a Node.js/Express backend and a vue.js frontend. The built vue.js files are hosted by the express server.
 
+## Note
+There is also a Chrome/Firefox extension available. It lets you create a QR-Code/short URL by simply pressing the icon in your browser, or even with a keyboard shortcut. More info [here](https://github.com/BetaHuhn/qrgen-extension)
+
 ## Installation
 
 Download the repo:
