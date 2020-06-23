@@ -1,5 +1,5 @@
 import express from "express";
-import Short from "../models/model.js";
+import Short from "../models/model";
 import mongoose from "mongoose";
 import rateLimit from "express-rate-limit";
 import generate from "nanoid";
@@ -60,7 +60,7 @@ router.get(
       }
 
       log.log("No short found");
-      sendResult(res, status.NOT_FOUND, 404);
+      sendResult(res, 'not found', status.NOT_FOUND);
     } catch (error) {
       log.error(error);
       next(error);

@@ -4,3 +4,6 @@ node_modules/
 .git
 logs
 *.log
+.nyc_output
+coverage/
+.coveralls.yml

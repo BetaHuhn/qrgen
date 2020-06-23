@@ -1,0 +1,6 @@
+
+language: node_js
+node_js: 
+    - "stable"
+install: npm install
+after_success: npm run coverage

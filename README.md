@@ -1,4 +1,5 @@
 # qrgen.cc - QR-Code generator/url-shortener
+[![Build Status](https://travis-ci.org/BetaHuhn/qrgen.svg?branch=master)](https://travis-ci.org/BetaHuhn/qrgen) [![Coverage Status](https://coveralls.io/repos/github/BetaHuhn/qrgen/badge.svg?branch=ava-unit-tests)](https://coveralls.io/github/BetaHuhn/qrgen?branch=ava-unit-tests)
 
 QrGen.cc is a free service that lets you create QR-Codes and shortened URLs from any link quickly and easily
 
