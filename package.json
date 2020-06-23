@@ -9,6 +9,7 @@
     "client:lint": "cd client && npx vue-cli-service lint",
     "server:test": "ava tests/**/*.spec.ts --verbose",
     "server:cover": "./node_modules/.bin/nyc npm run server:test",
+    "server:coverage": "./node_modules/.bin/nyc report --reporter=text-lcov | coveralls",
     "server:dev": "./node_modules/.bin/tsc-watch --onSuccess \"sudo DEBUG=server:* nodemon ./build/index.js\"",
     "server:watch": "tsc -w -p tsconfig.json",
     "server:build": "tsc -p tsconfig.json",
@@ -55,6 +56,7 @@
     "@types/nanoid": "^2.1.0",
     "@types/supertest": "^2.0.9",
     "ava": "^3.9.0",
+    "coveralls": "^3.1.0",
     "cross-env": "^7.0.2",
     "mongodb-memory-server": "^6.6.1",
     "nodemon": "^2.0.3",
@@ -75,6 +77,10 @@
     ]
   },
   "nyc": {
-    "reporter": [ "lcov", "text", "html" ]
+    "reporter": [
+      "lcov",
+      "text",
+      "html"
+    ]
   }
 }
