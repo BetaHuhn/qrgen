@@ -7,8 +7,8 @@
     "client:serve": "cd client && npx vue-cli-service serve",
     "client:build": "cd client && npx vue-cli-service build",
     "client:lint": "cd client && npx vue-cli-service lint",
-    "test": "ava tests/**/*.spec.ts --verbose",
-    "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov | coveralls",
+    "test": "nyc --reporter=html --reporter=text ava",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "server:dev": "./node_modules/.bin/tsc-watch --onSuccess \"sudo DEBUG=server:* nodemon ./build/index.js\"",
     "server:watch": "tsc -w -p tsconfig.json",
     "server:build": "tsc -p tsconfig.json",
@@ -73,12 +73,6 @@
     "require": [
       "ts-node/register",
       "tsconfig-paths/register"
-    ]
-  },
-  "nyc": {
-    "reporter": [
-      "text",
-      "html"
     ]
   }
 }
