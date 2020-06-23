@@ -1,5 +1,5 @@
 import express from "express";
-import Short from "../models/model.js";
+import Short from "../models/model";
 import mongoose from "mongoose";
 import rateLimit from "express-rate-limit";
 import generate from "nanoid";

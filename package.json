@@ -1,12 +1,13 @@
 {
   "name": "qrgen",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "QrGen.cc is a free service that lets you create QR-Codes and shortened URLs from any link quickly and easily",
   "main": "build/index.js",
   "scripts": {
     "client:serve": "cd client && npx vue-cli-service serve",
     "client:build": "cd client && npx vue-cli-service build",
     "client:lint": "cd client && npx vue-cli-service lint",
+    "server:test": "ava tests/**/*.spec.ts --verbose",
     "server:dev": "./node_modules/.bin/tsc-watch --onSuccess \"sudo DEBUG=server:* nodemon ./build/index.js\"",
     "server:watch": "tsc -w -p tsconfig.json",
     "server:build": "tsc -p tsconfig.json",
@@ -17,6 +18,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/BetaHuhn/qrgen.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BetaHuhn/qrgen/issues"
   },
   "homepage": "https://qrgen.cc",
   "license": "MIT",
@@ -48,9 +52,24 @@
     "@types/mongoose": "^5.7.16",
     "@types/morgan": "^1.9.0",
     "@types/nanoid": "^2.1.0",
+    "@types/supertest": "^2.0.9",
+    "ava": "^3.9.0",
     "cross-env": "^7.0.2",
+    "mongodb-memory-server": "^6.6.1",
     "nodemon": "^2.0.3",
+    "supertest": "^4.0.2",
+    "ts-node": "^8.10.2",
     "tsc-watch": "^4.2.8",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^3.9.5"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register",
+      "tsconfig-paths/register"
+    ]
   }
 }
