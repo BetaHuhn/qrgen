@@ -60,7 +60,7 @@ router.get(
       }
 
       log.log("No short found");
-      sendResult(res, status.NOT_FOUND, 404);
+      sendResult(res, 'not found', status.NOT_FOUND);
     } catch (error) {
       log.error(error);
       next(error);
