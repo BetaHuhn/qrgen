@@ -7,9 +7,8 @@
     "client:serve": "cd client && npx vue-cli-service serve",
     "client:build": "cd client && npx vue-cli-service build",
     "client:lint": "cd client && npx vue-cli-service lint",
-    "server:test": "ava tests/**/*.spec.ts --verbose",
-    "server:cover": "./node_modules/.bin/nyc npm run server:test",
-    "server:coverage": "./node_modules/.bin/nyc report --reporter=text-lcov | coveralls",
+    "test": "ava tests/**/*.spec.ts --verbose",
+    "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov | coveralls",
     "server:dev": "./node_modules/.bin/tsc-watch --onSuccess \"sudo DEBUG=server:* nodemon ./build/index.js\"",
     "server:watch": "tsc -w -p tsconfig.json",
     "server:build": "tsc -p tsconfig.json",
@@ -78,7 +77,6 @@
   },
   "nyc": {
     "reporter": [
-      "lcov",
       "text",
       "html"
     ]
