@@ -14,11 +14,6 @@ test.before(async () => {
     await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 });
 
-/* Add express app to context */
-test.beforeEach(async (t) => {
-    t.context.app = app;
-});
-
 /*  Delete all database entries after each test */
 test.afterEach.always( async () => {
     await Short.deleteMany({});
@@ -26,23 +21,20 @@ test.afterEach.always( async () => {
 
 /* Add a new short */
 test.serial('add short', async t => {
-    const { app } = t.context;
     const res = await request(app)
         .post('/api/create')
         .send({
-            url: 'https://google.de/test'
+            url: 'https://google.de/test1'
         });
     t.is(res.status, 200);
     const code = res.body.result.code;
     t.is(code.length, 5);
     const newShort = await Short.findOne({ code: code }) || { url: undefined };
-    t.is( newShort.url , 'https://google.de/test');
+    t.is( newShort.url , 'https://google.de/test1');
 });
 
 /* Get URL for added short by code */
 test.serial('get short', async t => {
-    const { app } = t.context;
-
     /* Create test short */
     const short = new Short({
         _id: new mongoose.Types.ObjectId(),
@@ -61,8 +53,6 @@ test.serial('get short', async t => {
 
 /* Add same short again */
 test.serial('add short - duplicate', async t => {
-    const { app } = t.context;
-
     /* Create test short */
     const short = new Short({
         _id: new mongoose.Types.ObjectId(),
@@ -85,7 +75,6 @@ test.serial('add short - duplicate', async t => {
 
 /* Try to add short with invalid URL */
 test.serial('add short - invalid URL', async t => {
-    const { app } = t.context;
     const res = await request(app)
         .post('/api/create')
         .send({
@@ -96,7 +85,6 @@ test.serial('add short - invalid URL', async t => {
 
 /* Get URL by none exisiting code */
 test.serial('get short - none existing code', async t => {
-    const { app } = t.context;
     const res = await request(app)
         .get('/api?code=aaaaa')
     t.is(res.body.status, 404);
@@ -104,8 +92,22 @@ test.serial('get short - none existing code', async t => {
 
 /* Get URL by invalid code */
 test.serial('get short - invalid code', async t => {
-    const { app } = t.context;
     const res = await request(app)
         .get('/api?code=')
     t.is(res.status, 400);
+});
+
+/* Add a new short with human readable code option set to true */
+test.serial('add short - with human readable code', async t => {
+    const res = await request(app)
+        .post('/api/create')
+        .send({
+            url: 'https://google.de/test2',
+            human: true
+        });
+    t.is(res.status, 200);
+    const code = res.body.result.code;
+    t.is(code.includes('-'), true);
+    const newShort = await Short.findOne({ code: code }) || { url: undefined };
+    t.is( newShort.url , 'https://google.de/test2');
 });
