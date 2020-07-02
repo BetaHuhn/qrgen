@@ -97,7 +97,7 @@ test.serial('get short - invalid code', async t => {
     t.is(res.status, 400);
 });
 
-/* Add a new short with human readable code option set to true*/
+/* Add a new short with human readable code option set to true */
 test.serial('add short - with human readable code', async t => {
     const res = await request(app)
         .post('/api/create')
@@ -110,4 +110,12 @@ test.serial('add short - with human readable code', async t => {
     t.is(code.includes('-'), true);
     const newShort = await Short.findOne({ code: code }) || { url: undefined };
     t.is( newShort.url , 'https://google.de/test2');
+});
+
+/* Test if redirect to frontend works */
+test.serial('redirect to frontend', async t => {
+    const res = await request(app)
+        .get('/test')
+    t.is(res.status, 200);
+    t.is(res.type, 'text/html');
 });
