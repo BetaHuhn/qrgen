@@ -93,7 +93,7 @@ router.post(
       }
 
       let code;
-      if(req.body.human === true ||req.body.human.toString().toLowerCase() === 'true'){
+      if(req.body.human != undefined && req.body.human === true){
         log.log("Using human readable format as code")
         code = randomColor() + '-' + randomWord()
       }else{
