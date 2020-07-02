@@ -9,6 +9,7 @@ import { sendResult } from "../middleware/middleware";
 import status from "../utils/status";
 import log from "../utils/log";
 import fs from "fs";
+import { randomWord, randomColor } from "../utils/random";
 const router = express.Router();
 
 const limit = rateLimit({
@@ -74,6 +75,7 @@ router.post(
   connect({
     body: yxc.object({
       url: yxc.string().regex(Regex.url),
+      human: yxc.boolean().optional(),
     }),
   }),
   async (req, res, next) => {
@@ -90,10 +92,18 @@ router.post(
         }, 200);
       }
 
+      let code;
+      if(req.body.human === true ||req.body.human.toString().toLowerCase() === 'true'){
+        log.log("Using human readable format as code")
+        code = randomColor() + '-' + randomWord()
+      }else{
+        code = generate(5);
+      }
+
       log.log("No entry found. Creating new one...");
       const query = {
         _id: new mongoose.Types.ObjectId(),
-        code: generate(5),
+        code,
         count: 0,
         url,
         addedAt: +new Date(),
