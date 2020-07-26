@@ -58,10 +58,8 @@
                 const url = this.withHttp(route);
                 if(this.validURL(url)){
                     this.$store.dispatch("retrieveAPIData", url);
-                }else if(route.length === 5){
-                    return this.$store.dispatch("getFromCode", route);
                 }else{
-                    this.$store.commit("display404");
+                    this.$store.dispatch("getFromCode", route);
                 }
             }
         },

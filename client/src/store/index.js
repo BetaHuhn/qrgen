@@ -100,7 +100,7 @@ export default new Vuex.Store({
         .then( json => {
           if(json.status == 200){
             window.location.replace(json.result.url);
-          }else if(json.result == 404){
+          }else {
             commit("display404")
           }
         })

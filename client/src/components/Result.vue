@@ -20,6 +20,7 @@
         methods: {
             reset: function () {
                 this.$store.dispatch("resetState")
+                this.$router.replace("/")
             },
             copy: function () {
                 const resp = document.getElementById("short").href
@@ -40,20 +41,14 @@
             }
         },
         computed: {
-            code: {
-                get: function () {
-                    return this.$store.state.code;
-                }
+            code: function () {
+                return this.$store.state.code;
             },
-            qr: {
-                get: function () {
-                    return this.$store.state.qr;
-                }
+            qr: function () {
+                return this.$store.state.qr;
             },
-            url: {
-                get: function () {
-                    return this.$store.state.url;
-                }
+            url: function () {
+                return this.$store.state.url;
             }
         },
         components: {

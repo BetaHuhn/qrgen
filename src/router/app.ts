@@ -100,6 +100,8 @@ router.post(
         code = generate(5);
       }
 
+      log.log(code)
+      
       log.log("No entry found. Creating new one...");
       const query = {
         _id: new mongoose.Types.ObjectId(),
