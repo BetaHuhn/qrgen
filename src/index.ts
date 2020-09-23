@@ -1,6 +1,7 @@
 import app from './server';
 import log from "./utils/log";
 import { connectDatabase } from "./database/database";
+import { print as runningAt} from 'running-at'
 
 /**
  * Connect to database and listen to given port
@@ -9,7 +10,7 @@ async function startServer() {
     try {
       await connectDatabase();
       const PORT = process.env.PORT || 3000;
-      app.listen(PORT, () => log.log("listening on port " + PORT));
+      app.listen(PORT, () => runningAt(PORT));
     } catch (error) {
       log.error("Server setup failed. Wrong server IP or authentication?");
       log.error(error);
