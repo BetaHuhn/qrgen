@@ -1,7 +1,32 @@
-import debug from "debug";
+import { Signale } from 'signale'
 
-export default {
-  log: debug("server:log"),
-  warn: debug("server:warn"),
-  error: debug("server:error"),
-};
+export default new Signale({
+	scope: 'qrgen',
+	logLevel: process.env.LOG_LEVEL || 'info',
+	types: {
+		success: {
+			badge: '✔',
+			color: 'green',
+			label: 'success',
+			logLevel: 'debug'
+		},
+		info: {
+			badge: 'ℹ️',
+			color: 'blue',
+			label: 'info',
+			logLevel: 'debug'
+		},
+		request: {
+			badge: '->',
+			color: 'gray',
+			label: 'request',
+			logLevel: 'debug'
+		},
+		debug: {
+			badge: '🐛',
+			color: 'cyan',
+			label: 'debug',
+			logLevel: 'info'
+		}
+	}
+})
