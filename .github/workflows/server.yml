@@ -1,4 +1,4 @@
-name: Test and build Server
+name: Server
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: c-hive/gha-npm-cache@v1
-      - name: Install server dependencies
+      - name: Install dependencies
         run: npm ci
       - name: Build Server
         run: npm run server:build
@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: c-hive/gha-npm-cache@v1
-      - name: Install server dependencies
+      - name: Install dependencies
         run: npm ci
       - name: Run tests and generate coverage report
         run: npm run coverage
@@ -31,3 +31,13 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+  lint:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip-build]')"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: c-hive/gha-npm-cache@v1
+      - name: Install dependencies
+        run: npm ci
+      - name: Run eslint
+        run: npm run lint
