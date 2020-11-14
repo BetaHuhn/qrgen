@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 function defaultState () {
   return {
-    show: "normal",
+    show: "form",
     code: "",
     url: "",
     inputInvalid: false,
@@ -33,6 +33,7 @@ export default new Vuex.Store({
       state.show = "loading";
     },
     inputInvalid(state){
+      state.show = "form";
       state.inputInvalid = true;
     },
     display404 (state) {
@@ -71,16 +72,23 @@ export default new Vuex.Store({
           if(json.status === 200){
             commit("removeError")
             commit("setResponse", {code: json.result.code, url: json.result.url})
+            return
           }
+
+          commit("displayError")
         })
         .catch( err => {
+          if (err.status === 404) {
+            return commit("inputInvalid")
+          }
+
           if (err.text) {
-            err.text().then( errorMessage => {
+            return err.text().then( errorMessage => {
               commit("displayError", errorMessage)
             })
-          } else {
-            commit("displayError")
           }
+
+          commit("displayError")
         })
     },
     async getFromCode ({ commit }, code) {

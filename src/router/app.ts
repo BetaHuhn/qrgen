@@ -47,7 +47,6 @@ router.get(
 			log.warn("No short found");
 			sendResult(res, 'not found', status.NOT_FOUND);
 		} catch (err) {
-			log.fatal(err);
 			next(err);
 		}
 	}
@@ -86,7 +85,6 @@ router.post(
 				url: createdShort.url,
 			}, 200);
 		} catch (err) {
-			log.fatal(err);
 			next(err);
 		}
 	}

@@ -3,7 +3,7 @@
         <main>
             <div class="content">
                 <Result v-if="show === 'result'" />
-                <Form v-if="show === 'normal'" />
+                <Form v-if="show === 'form'" />
                 <div v-if="show === 'redirect'">
                     <h1>Redirecting...</h1>
                 </div>

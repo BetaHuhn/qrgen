@@ -37,10 +37,16 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 		return next()
 	}
 
-	const message = err.message || 'An unkown error ocurred, please try again.'
-	const returnStatus = typeof err === 'number' ? err : 400
+	let message, returnStatus
+	if (err.name === 'HTTPError') {
+		log.warn('Metdata parsing failed: ' + err.message)
+		returnStatus = err.response.statusCode
+	} else {
+		log.fatal(err)
+		returnStatus = typeof err === 'number' ? err : 400
+	}
 
-	log.fatal(`${ returnStatus } - ${ message }`)
+	message = err.message || 'An unkown error ocurred, please try again.'
 
 	res.status(returnStatus).json({
 		status: returnStatus,
