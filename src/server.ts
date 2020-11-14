@@ -3,7 +3,6 @@ import bodyParser from 'body-parser'
 const app = express()
 import cors from 'cors'
 import compression from 'compression'
-import helmet from 'helmet'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -17,19 +16,9 @@ app.use(express.json({ limit: '1mb' }))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(compression())
-app.use(helmet())
-app.use(
-	helmet.contentSecurityPolicy({
-		directives: {
-			...helmet.contentSecurityPolicy.getDefaultDirectives(),
-			'connect-src': [ `'self'`, 'stats.mxis.ch' ],
-			'script-src': [ `'self'`, 'stats.mxis.ch', `'sha256-NGF/yVku8H6/Qf6cN7xZQ53TMOvSXoxbfFv1kgRw/L0='` ]
-		}
-	})
-)
 
 app.use((req, res, next) => {
-	res.setHeader('X-Powered-By', 'magic')
+	res.setHeader('Content-Security-Policy', `script-src 'self' stats.mxis.ch 'unsafe-inline'; connect-src 'self' stats.mxis.ch; script-src-attr 'none'; style-src 'self' https: 'unsafe-inline'; default-src 'self'; base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';`)
 	next()
 })
 
