@@ -1,58 +1,58 @@
 <template>
-    <div id="home">
-        <main>
-            <div class="content">
-                <Result v-if="show === 'result'" />
-                <Form v-if="show === 'form'" />
-                <div v-if="show === 'redirect'">
-                    <h1>Redirecting...</h1>
-                </div>
-                <div v-if="show === 'loading'">
-                    <h1>Loading...</h1>
-                </div>
-                <NotFound v-if="show === 'notFound'" />
-            </div>
-            <By />
-        </main>
-        <Footer />
-    </div>
+  <div id="home">
+    <main>
+      <div class="content">
+        <Result v-if="show === 'result'" />
+        <Form v-if="show === 'form'" />
+        <div v-if="show === 'redirect'">
+          <h1>Redirecting...</h1>
+        </div>
+        <div v-if="show === 'loading'">
+          <h1>Loading...</h1>
+        </div>
+        <NotFound v-if="show === 'notFound'" />
+      </div>
+      <By />
+    </main>
+    <Footer />
+  </div>
 </template>
 
 <script>
-    import Result from '@/components/Result'
-    import Form from '@/components/Form'
-    import Footer from '@/components/Footer'
-    import By from '@/components/By'
-    import NotFound from '@/components/NotFound'
-    import validUrl from '@/utils/validUrl'
-    import withHttp from '@/utils/withHttp'
+import Result from '@/components/Result'
+import Form from '@/components/Form'
+import Footer from '@/components/Footer'
+import By from '@/components/By'
+import NotFound from '@/components/NotFound'
+import validUrl from '@/utils/validUrl'
+import withHttp from '@/utils/withHttp'
 
-    export default {
-        name: 'App',
-        computed: {
-            show: function () {
-                return this.$store.state.show
-            }
-        },
-        components: {
-            Result,
-            Form,
-            Footer,
-            By,
-            NotFound
-        },
-        created: function () {
-            if(this.$route.meta.checkPath === true){
-                const route = this.$route.fullPath.substr(1);
-                const url = withHttp(route);
-                if(validUrl(url)){
-                    return this.$store.dispatch("createShort", url);
-                }
+export default {
+	name: 'App',
+	components: {
+		Result,
+		Form,
+		Footer,
+		By,
+		NotFound
+	},
+	computed: {
+		show: function() {
+			return this.$store.state.show
+		}
+	},
+	created: function() {
+		if (this.$route.meta.checkPath === true) {
+			const route = this.$route.fullPath.substr(1)
+			const url = withHttp(route)
+			if (validUrl(url)) {
+				return this.$store.dispatch('createShort', url)
+			}
 
-                this.$store.commit("display404")
-            }
-        },
-    }
+			this.$store.commit('display404')
+		}
+	}
+}
 </script>
 
 <style scoped>

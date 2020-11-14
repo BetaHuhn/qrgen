@@ -1,31 +1,35 @@
 <template>
-	<div id="inprint">
-		<main>
-			<div class="content">
-				<h1>Inprint</h1>
-				<h2>Address</h2>
-				<p class="text">Maximilian Schiller<br />
-					Kronbühlstr. 11a<br />
-					78351 Bodman-Ludwigshafen</p>
-				<h2>Contact</h2>
-				<p class="text">E-Mail: <a href="mailto:contact@mxis.ch">contact@mxis.ch</a></p>
-			</div>
-			<By />
-		</main>
-		<Footer />
-	</div>
+  <div id="inprint">
+    <main>
+      <div class="content">
+        <h1>Inprint</h1>
+        <h2>Address</h2>
+        <p class="text">
+          Maximilian Schiller<br>
+          Kronbühlstr. 11a<br>
+          78351 Bodman-Ludwigshafen
+        </p>
+        <h2>Contact</h2>
+        <p class="text">
+          E-Mail: <a href="mailto:contact@mxis.ch">contact@mxis.ch</a>
+        </p>
+      </div>
+      <By />
+    </main>
+    <Footer />
+  </div>
 </template>
 
 <script>
-	import Footer from '@/components/Footer'
-	import By from '@/components/By'
-	
-	export default {
-		name: 'App',
-		components: {
-			Footer, By
-		}
+import Footer from '@/components/Footer'
+import By from '@/components/By'
+
+export default {
+	name: 'App',
+	components: {
+		Footer, By
 	}
+}
 </script>
 
 <style>

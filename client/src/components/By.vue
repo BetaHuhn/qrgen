@@ -1,13 +1,13 @@
 <template>
-	<div class="by">
-		<p>Created by <a href="https://github.com/BetaHuhn">BetaHuhn</a></p>
-	</div>
+  <div class="by">
+    <p>Created by <a href="https://github.com/BetaHuhn">BetaHuhn</a></p>
+  </div>
 </template>
 
 <script>
-  export default {
-	name: 'By',
-  }
+export default {
+	name: 'By'
+}
 </script>
 
 <style scoped>

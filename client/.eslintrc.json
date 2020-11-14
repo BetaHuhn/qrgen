@@ -1,0 +1,16 @@
+{
+    "root": true,
+    "env": {
+        "node": true
+    },
+    "extends": [
+        "@betahuhn/eslint-config-node",
+        "plugin:vue/recommended"
+    ],
+    "parserOptions": {
+        "parser": "babel-eslint"
+    },
+    "rules": {
+        "default-case-last": 0
+    }
+}

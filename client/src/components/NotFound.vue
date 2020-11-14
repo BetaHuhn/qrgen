@@ -1,27 +1,39 @@
 <template>
-    <div id="error">
-        <div class="not-found-wrapper">
-            <div class="branding noselect">
-                <div class="wordmark"> <img src="/static/404.svg"></div>
-            </div>
-            <h2>Error 404</h2>
-            <div style="text-align:center;margin-bottom:40px;">Either the short url doesn't exist or you are
-                trying to use a url that is not valid
-            </div>
-            <div class="main-button">
-                <button onclick="window.location.href='/'" class="clean"> ← Go back Home</button> 
-            </div>
-            <div> 
-                <a class="link" target="_top" href="mailto:contact@mxis.ch">Report a problem</a> 
-            </div>
+  <div id="error">
+    <div class="not-found-wrapper">
+      <div class="branding noselect">
+        <div class="wordmark">
+          <img src="/static/404.svg">
         </div>
+      </div>
+      <h2>Error 404</h2>
+      <div style="text-align:center;margin-bottom:40px;">
+        Either the short url doesn't exist or you are
+        trying to use a url that is not valid
+      </div>
+      <div class="main-button">
+        <button
+          onclick="window.location.href='/'"
+          class="clean"
+        >
+          ← Go back Home
+        </button>
+      </div>
+      <div>
+        <a
+          class="link"
+          target="_top"
+          href="mailto:contact@mxis.ch"
+        >Report a problem</a>
+      </div>
     </div>
+  </div>
 </template>
 
 <script scoped>
-    export default {
-        name: '404'
-    }
+export default {
+	name: '404'
+}
 </script>
 
 <style scoped>

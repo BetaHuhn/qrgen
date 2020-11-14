@@ -1,59 +1,90 @@
 <template>
-    <div id="form">
-        <div class="description noselect">
-            <h1><a class="link bold" style="color: #fff" href="https://qrgen.cc">QrGen.cc</a></h1>
-            <p>Generate a QR-Code and Short Url</p>
-        </div>
-        <div class="input-container noselect" :class="{ urlInvalidShake: inputInvalid }">
-            <p class="input-label noselect">Enter a URL</p>
-            <div class="center" data-children-count="1">
-                <input id="url" class="url-input" :class="{ inputInvalid: inputInvalid }" v-model="url" autocomplete="off" style="width: 12px;">
-            </div>
-        </div>
-        <div class="main-button">
-            <button class="clean" @click="create">CREATE</button>
-        </div>
-        <p v-if="error" class="error">{{ errorMsg }}</p>
+  <div id="form">
+    <div class="description noselect">
+      <h1>
+        <a
+          class="link bold"
+          style="color: #fff"
+          href="https://qrgen.cc"
+        >QrGen.cc</a>
+      </h1>
+      <p>Generate a QR-Code and Short Url</p>
     </div>
+    <div
+      class="input-container noselect"
+      :class="{ urlInvalidShake: inputInvalid }"
+    >
+      <p class="input-label noselect">
+        Enter a URL
+      </p>
+      <div
+        class="center"
+        data-children-count="1"
+      >
+        <input
+          id="url"
+          v-model="url"
+          class="url-input"
+          :class="{ inputInvalid: inputInvalid }"
+          autocomplete="off"
+          style="width: 12px;"
+        >
+      </div>
+    </div>
+    <div class="main-button">
+      <button
+        class="clean"
+        @click="create"
+      >
+        CREATE
+      </button>
+    </div>
+    <p
+      v-if="error"
+      class="error"
+    >
+      {{ errorMsg }}
+    </p>
+  </div>
 </template>
 
 <script>
-    import validUrl from '@/utils/validUrl'
-    import withHttp from '@/utils/withHttp'
+import validUrl from '@/utils/validUrl'
+import withHttp from '@/utils/withHttp'
 
-    export default {
-        name: 'Form',
-        methods: {
-            create: function () {
-                const url = withHttp(this.url);
-                if(validUrl(url)){
-                    return this.$store.dispatch("createShort", url);
-                }
+export default {
+	name: 'Form',
+	computed: {
+		url: {
+			get: function() {
+				return this.$store.state.url
+			},
+			set: function(newUrl) {
+				this.$store.dispatch('changeUrl', newUrl)
+			}
+		},
+		inputInvalid: function() {
+			return this.$store.state.inputInvalid
+		},
+		error: function() {
+			return this.$store.state.error
+		},
+		errorMsg: function() {
+			return this.$store.state.errorMsg
+		}
+	},
+	methods: {
+		create: function() {
+			const url = withHttp(this.url)
+			if (validUrl(url)) {
+				return this.$store.dispatch('createShort', url)
+			}
 
-                this.$store.commit("inputInvalid");
-            }
-        },
-        computed:{
-            url:{
-                get: function(){ 
-                    return this.$store.state.url; 
-                }, 
-                set: function(newUrl){ 
-                    this.$store.dispatch('changeUrl', newUrl); 
-                }
-            },
-            inputInvalid: function(){ 
-                return this.$store.state.inputInvalid;
-            },
-            error: function(){ 
-                return this.$store.state.error;
-            },
-            errorMsg: function(){ 
-                return this.$store.state.errorMsg;
-            }
-        } 
+			this.$store.commit('inputInvalid')
+		}
+	}
 
-    }
+}
 </script>
 
 <style scoped>
