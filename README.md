@@ -1,5 +1,5 @@
 # qrgen.cc - QR-Code generator/url-shortener
-[![Build Status](https://travis-ci.org/BetaHuhn/qrgen.svg?branch=master)](https://travis-ci.org/BetaHuhn/qrgen) [![Coverage Status](https://coveralls.io/repos/github/BetaHuhn/qrgen/badge.svg?branch=master)](https://coveralls.io/github/BetaHuhn/qrgen?branch=master)
+[![Server](https://github.com/BetaHuhn/qrgen/workflows/Server/badge.svg)](https://github.com/BetaHuhn/qrgen/actions?query=workflow%3AServer) [![Client](https://github.com/BetaHuhn/qrgen/workflows/Client/badge.svg)](https://github.com/BetaHuhn/qrgen/actions?query=workflow%3AClient) [![Coverage Status](https://coveralls.io/repos/github/BetaHuhn/qrgen/badge.svg)](https://coveralls.io/github/BetaHuhn/qrgen)
 
 QrGen.cc is a free service that lets you create QR-Codes and shortened URLs from any link quickly and easily
 
@@ -63,8 +63,8 @@ npm run start
 ```
 
 ## Authors
-* **Maximilian Schiller** ([@BetaHuhn](https://github.com/BetaHuhn)) - *Initial work*
-* **Alexander Janke** ([@alexanderjanke](https://github.com/alexanderjanke)) - *Typescript*
+* **Maximilian Schiller** ([@BetaHuhn](https://github.com/BetaHuhn)) - *Main contributor*
+* **Alexander Janke** ([@alexanderjanke](https://github.com/alexanderjanke)) - *Conversion to Typescript*
 
 ## License
 
