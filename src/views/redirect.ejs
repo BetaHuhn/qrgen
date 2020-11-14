@@ -6,20 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Redirecting - QrGen.cc</title>
-        <meta name="title" content="<%= title || 'Shortened URL by QrGen.cc' %>">
+        <meta name="title" content="<%= title + ' | QrGen.cc' || 'URL shortened by QrGen.cc' %>">
         <meta name="description" content="<%= description %>">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="<%= url %>">
-        <meta property="og:title" content="<%= title %>">
+        <meta property="og:title" content="<%= title + ' | QrGen.cc' || 'URL shortened by QrGen.cc' %>">
         <meta property="og:description" content="<%= description %>">
         <meta property="og:image" content="<%= image %>">
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
         <meta property="twitter:url" content="<%= url %>">
-        <meta property="twitter:title" content="<%= title %>">
+        <meta property="twitter:title" content="<%= title + ' | QrGen.cc' || 'URL shortened by QrGen.cc' %>">
         <meta property="twitter:description" content="<%= description %>">
         <meta property="twitter:image" content="<%= image %>">
 
@@ -181,7 +181,7 @@
             window.addEventListener("load", function(event) {
                 setTimeout(function(){
                     window.location.href = "<%= url %>"
-                }, 1000)
+                }, 1500)
             });
         </script>
     </body>
