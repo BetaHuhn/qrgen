@@ -44,29 +44,21 @@ DB_CONNECTION_STRING=Your MongoDB connection string; defaults to mongodb://local
 PORT=Port the server runs on; defaults to 3000
 ```
 
-Install server dependencies:
+Install dependencies:
 
 ```
-npm i --save
+npm run dependencies
 ```
 
-Go into client directory and install vue.js frontend dependencies:
-
-```
-cd client
-npm i --save
-```
-
-Build frontend:
+Build backend and frontend:
 
 ```
 npm run build
 ```
 
-Go back to server directory and start app
+Start app:
 
 ```
-cd ..
 npm run start
 ```
 

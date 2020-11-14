@@ -40,4 +40,4 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run eslint
-        run: npm run lint
+        run: npm run server:lint
