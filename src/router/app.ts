@@ -117,7 +117,7 @@ router.get('*', async (req, res) => {
 				description: short.description ? `${ short.description } | URL shortened by QrGen.cc` : 'This URL was shortened by QrGen.cc, a free service that lets you create QR-Codes and shortened URLs from any link quickly and easily.'
 			}
 
-			log.info(`Redirecting to ${ short.url }...`)
+			log.info(`Redirecting to ${ short.url.slice(0, 60) }...`)
 			const html = await ejs.renderFile('./src/views/redirect.ejs', data)
 			return res.send(html)
 		}

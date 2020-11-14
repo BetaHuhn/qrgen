@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(compression())
 
 app.use((req, res, next) => {
-	res.setHeader('Content-Security-Policy', `script-src 'self' stats.mxis.ch 'unsafe-inline'; connect-src 'self' stats.mxis.ch; script-src-attr 'none'; style-src 'self' https: 'unsafe-inline'; default-src 'self'; base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';`)
+	res.setHeader('Content-Security-Policy', `script-src 'self' stats.mxis.ch 'unsafe-inline'; connect-src 'self' stats.mxis.ch; script-src-attr 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; default-src 'self'; block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;`)
 	next()
 })
 

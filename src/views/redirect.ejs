@@ -51,6 +51,7 @@
             main .content {
                 width: 85%;
                 max-width: 1000px;
+                overflow: hidden;
                 margin: auto;
                 text-align: center;
                 position: absolute;
@@ -164,7 +165,7 @@
 
         </style>
     </head>
-    <body>
+    <body onload="redirect()">
         <div id="app">
             <main>
                 <div class="content">
@@ -178,11 +179,11 @@
             </div>
         </div>
         <script>
-            window.addEventListener("load", function(event) {
+            function redirect() {
                 setTimeout(function(){
                     window.location.href = "<%= url %>"
                 }, 1500)
-            });
+            }
         </script>
     </body>
 </html>
