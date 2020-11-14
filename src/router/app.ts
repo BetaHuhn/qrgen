@@ -1,137 +1,135 @@
 import express from "express";
-import Short from "../models/model";
-import mongoose from "mongoose";
-import rateLimit from "express-rate-limit";
-import generate from "nanoid";
+import ejs from "ejs";
+import fs from "fs";
 import yxc, { connect } from "@dotvirus/yxc";
+import createShort from '../service/createShort'
+import Short from "../models/short";
 import { Regex } from "../utils/regex";
-import { sendResult } from "../middleware/middleware";
+import { limit } from "../middleware";
+import sendResult from "../utils/send";
 import status from "../utils/status";
 import log from "../utils/log";
-import fs from "fs";
-import { randomWord, randomColor } from "../utils/random";
 const router = express.Router();
 
-const limit = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 200,
-  handler: function (req: express.Request, res: express.Response) {
-    log.log(`${req.ip} has exceeded rate limit`);
-    res.status(status.TOO_MANY_REQUESTS).send({
-      status: status.TOO_MANY_REQUESTS,
-      type: "error",
-      response: "rate limit exceeded",
-      error: {
-        text: "rate limit exceeded",
-        limit: req.rateLimit.limit,
-        current: req.rateLimit.current,
-        remaining: req.rateLimit.remaining,
-        resetTime: req.rateLimit.resetTime,
-      },
-    });
-  },
-  headers: true,
-});
-
 router.get(
-  "/api/",
-  connect({
-    query: yxc.object({
-      code: yxc.string().notEmpty(),
-    }),
-  }),
-  async (req, res, next) => {
-    const code = <string>req.query.code;
-    try {
-      log.log(`Checking if short "${code}" exists...`);
-      let short = await Short.findOne({ code: code });
-      if (short) {
-        log.log(`short with code ${short.code} found. Updating counter...`);
-        await short.updateOne({
-          $inc: {
-            count: 1,
-          },
-        });
+	"/api/",
+	limit,
+	connect({
+		query: yxc.object({
+			code: yxc.string().notEmpty(),
+		})
+	}),
+	async (req, res, next) => {
+		const code = <string>req.query.code;
+		try {
+			log.info(`Checking if short "${ code }" exists...`);
+			const short = await Short.findOne({ code: code });
+			if (short) {
+				log.info(`short with code ${ short.code } found. Updating counter...`);
+				await short.updateOne({
+					$inc: {
+						count: 1,
+					},
+				});
 
-        log.log(`Redirecting to ${short.url}...`);
-        return sendResult(res, {
-          code: short.code,
-          url: short.url,
-        }, 200);
-      }
+				log.info(`Return data`);
+				return sendResult(res, {
+					code: short.code,
+					url: short.url,
+					title: short.title,
+					description: short.description,
+					provider: short.provider,
+					image: short.image
+				}, 200);
+			}
 
-      log.log("No short found");
-      sendResult(res, 'not found', status.NOT_FOUND);
-    } catch (error) {
-      log.error(error);
-      next(error);
-    }
-  }
+			log.warn("No short found");
+			sendResult(res, 'not found', status.NOT_FOUND);
+		} catch (err) {
+			log.fatal(err);
+			next(err);
+		}
+	}
 );
 
 router.post(
-  "/api/create",
-  limit,
-  connect({
-    body: yxc.object({
-      url: yxc.string().regex(Regex.url),
-      human: yxc.boolean().optional(),
-    }),
-  }),
-  async (req, res, next) => {
-    try {
-      const url: string = req.body.url;
-      log.log(`Checking if "${url}" exists...`);
-      const entry = await Short.findOne({ url: url });
+	"/api/create",
+	limit,
+	connect({
+		body: yxc.object({
+			url: yxc.string().regex(Regex.url),
+			human: yxc.boolean().optional(),
+		}),
+	}),
+	async (req, res, next) => {
+		try {
+			const url: string = req.body.url;
 
-      if (entry) {
-        log.log("Entry already exists");
-        return sendResult(res, {
-          code: entry.code,
-          url: entry.url,
-        }, 200);
-      }
+			log.info(`Checking if "${ url }" exists...`);
+			const entry = await Short.findOne({ url: url });
 
-      let code;
-      if(req.body.human != undefined && req.body.human === true){
-        log.log("Using human readable format as code")
-        code = randomColor() + '-' + randomWord()
-      }else{
-        code = generate(5);
-      }
+			if (entry) {
+				log.warn("Entry already exists");
+				return sendResult(res, {
+				code: entry.code,
+				url: entry.url,
+				}, 200);
+			}
+			
+			log.info("No entry found. Creating new one...");
+			const human = req.body.human != undefined && req.body.human === true;
+			const createdShort = await createShort(url, human);
 
-      log.log(code)
-      
-      log.log("No entry found. Creating new one...");
-      const query = {
-        _id: new mongoose.Types.ObjectId(),
-        code,
-        count: 0,
-        url,
-        addedAt: +new Date(),
-      };
-
-      log.log("Defining new mongoose-short...");
-      const short = new Short(query);
-
-      log.log("Saving short in database...");
-      const createdShort = await short.save();
-
-      sendResult(res, {
-        code: createdShort.code,
-        url: createdShort.url,
-      }, 200);
-    } catch (error) {
-      log.error(error);
-      next(error);
-    }
-  }
+			sendResult(res, {
+				code: createdShort.code,
+				url: createdShort.url,
+			}, 200);
+		} catch (err) {
+			log.fatal(err);
+			next(err);
+		}
+	}
 );
 
-/* Needed to get Vue.js Frontend to work properly */
 router.get("*", async (req, res) => {
-  let html = fs.readFileSync("./client/dist/index.html", "utf8");
-  res.send(html);
+	const code = req.originalUrl.replace(/^\/+/, '')
+	if (!code) {
+		const html = fs.readFileSync("./client/dist/main.html", "utf8");
+		return res.send(html);
+	}
+
+	try {
+		log.info(`Checking if short "${ code }" exists...`);
+		const short = await Short.findOne({ code: code });
+		if (short) {
+			log.info(`short with code ${ short.code } found. Updating counter...`);
+			await short.updateOne({
+				$inc: {
+				count: 1,
+				},
+			});
+
+			const data = {
+				url: short.url,
+				code: short.code,
+				title: short.title,
+				provider: short.provider || short.url,
+				image: short.image || 'https://qrgen.cc/static/banner.png',
+				description: short.description ? `${ short.description } | URL shortened by QrGen.cc` : 'This URL was shortened by QrGen.cc, a free service that lets you create QR-Codes and shortened URLs from any link quickly and easily.'
+			}
+
+			log.info(`Redirecting to ${ short.url }...`);
+			const html = await ejs.renderFile("./src/views/redirect.ejs", data)
+			return res.send(html)
+		}
+
+		log.warn("No short found");
+	} catch (err) {
+		log.fatal(err)
+	}
+
+	const html = fs.readFileSync("./client/dist/main.html", "utf8");
+	res.send(html);
 })
 
 export default router;

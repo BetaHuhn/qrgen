@@ -32,20 +32,20 @@ app.use(cors(corsOptions));
 app.use(appRouter);
 
 // Error handler
-app.use((err: any, req: express.Request, res: express.Response) => {
-  log.fatal(err)
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+	if (!err) {
+		return next()
+	}
 
-  const message = err.message || 'An unkown error ocurred, please try again.'
-  const returnStatus = typeof err === 'number' ? err : 500
+	const message = err.message || 'An unkown error ocurred, please try again.'
+	const returnStatus = typeof err === 'number' ? err : 400
 
-  if (req.accepts('application/json')) {
-    return res.json({
-      status: returnStatus,
-      error: err,
-    })
-  }
+	log.fatal(`${ returnStatus } - ${ message }`)
 
-  return res.status(returnStatus).send(message)
+	res.status(returnStatus).json({
+		status: returnStatus,
+		message: message
+	})
 })
 
 export default app;

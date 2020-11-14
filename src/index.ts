@@ -1,6 +1,6 @@
 import app from './server';
 import log from "./utils/log";
-import { connectDatabase } from "./database/database";
+import { connectDatabase } from "./database";
 import { print as runningAt} from 'running-at'
 
 /**

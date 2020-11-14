@@ -4,6 +4,10 @@ export interface IShort extends Document {
   _id: string;
   code: string;
   url: string;
+  title: string;
+  description: string;
+  provider: string;
+  image: string;
   count: number;
   addedAt: number;
 }
@@ -19,6 +23,18 @@ const shortSchema: Schema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+  },
+  title: {
+    type: String
+  },
+  description: {
+    type: String
+  },
+  provider: {
+    type: String
+  },
+  image: {
+    type: String
   },
   count: {
     type: Number,

@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from 'express'
+import rateLimit from "express-rate-limit";
+import status from "../utils/status";
 import log from '../utils/log'
 
-const ignoreRequestStrings: Array<string> = [ 'js/', 'css/', 'img/', 'static/', 'manifest.json' ] // Don't log request if one of the strings are in URL
+const ignoreRequestStrings: Array<string> = [ 'js/', 'css/', 'img/', 'static/', 'manifest.json', 'favicon.ico' ] // Don't log request if one of the strings are in URL
 
 export function routeLog() {
 	return (req:Request, res:Response, next: NextFunction) => {
@@ -21,16 +23,23 @@ export function routeLog() {
 	}
 }
 
-/**
- * Sends a response back to the client
- * @param res response - handled by express automatically
- * @param result Result (content) that should be send to the client
- * @param status Status (in json) that should be send to the client
- */
-export function sendResult(res: Response, result: any, status: number) {
-  res.json({
-    time: +new Date(),
-    status: status,
-    result,
-  });
-}
+export const limit = rateLimit({
+	windowMs: 15 * 60 * 1000,
+	max: 200,
+	handler: function (req: Request, res: Response) {
+		log.warn(`${req.ip} has exceeded rate limit`);
+		res.status(status.TOO_MANY_REQUESTS).send({
+			status: status.TOO_MANY_REQUESTS,
+			type: "error",
+			response: "rate limit exceeded",
+			error: {
+				text: "rate limit exceeded",
+				limit: req.rateLimit.limit,
+				current: req.rateLimit.current,
+				remaining: req.rateLimit.remaining,
+				resetTime: req.rateLimit.resetTime,
+			}
+		});
+	},
+	headers: true
+});

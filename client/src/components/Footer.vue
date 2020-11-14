@@ -22,28 +22,28 @@
 </script>
 
 <style scoped>
- footer{
-  width: 100%;
-  background-color: #191c1c;
-  position: absolute;
-}
-.footer{
-  max-width: 400px;
-  margin: auto;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  text-align: center;
-  font-size: 15px;
-  padding: 0px 10px;
-}
-.nav{
-  display: flex;
-  list-style: none;
-  padding: 0;
-  justify-content: center;
-  font-weight: 600;
-}
-.nav li{
-  margin: 1rem;
-}
+	footer{
+		width: 100%;
+		background-color: #191c1c;
+		position: absolute;
+	}
+	.footer{
+		max-width: 400px;
+		margin: auto;
+		margin-top: 3rem;
+		margin-bottom: 3rem;
+		text-align: center;
+		font-size: 15px;
+		padding: 0px 10px;
+	}
+	.nav{
+		display: flex;
+		list-style: none;
+		padding: 0;
+		justify-content: center;
+		font-weight: 600;
+	}
+	.nav li{
+		margin: 1rem;
+	}
 </style>

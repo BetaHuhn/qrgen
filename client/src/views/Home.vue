@@ -1,21 +1,21 @@
 <template>
-        <NotFound v-if="show == 'notFound'" />
-        <div v-else id="home">
-            <main>
-                <div class="content">
-                    <Result v-if="show == 'result'" />
-                    <Form v-if="show == 'normal'" />
-                    <div v-if="show == 'redirect'">
-                        <h1>Redirecting...</h1>
-                    </div>
-                    <div v-if="show == 'loading'">
-                        <h1>Loading...</h1>
-                    </div>
+    <div id="home">
+        <main>
+            <div class="content">
+                <Result v-if="show === 'result'" />
+                <Form v-if="show === 'normal'" />
+                <div v-if="show === 'redirect'">
+                    <h1>Redirecting...</h1>
                 </div>
-                <By />
-            </main>
-            <Footer />
-        </div>
+                <div v-if="show === 'loading'">
+                    <h1>Loading...</h1>
+                </div>
+                <NotFound v-if="show === 'notFound'" />
+            </div>
+            <By />
+        </main>
+        <Footer />
+    </div>
 </template>
 
 <script>
@@ -23,26 +23,15 @@
     import Form from '@/components/Form'
     import Footer from '@/components/Footer'
     import By from '@/components/By'
-    import NotFound from '@/views/404'
+    import NotFound from '@/components/NotFound'
+    import validUrl from '@/utils/validUrl'
+    import withHttp from '@/utils/withHttp'
 
     export default {
         name: 'App',
         computed: {
             show: function () {
                 return this.$store.state.show
-            }
-        },
-        methods: {
-            validURL: function(value){
-                const expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi
-                const regexp = new RegExp(expression);
-                return regexp.test(value);
-            },
-            withHttp: function(url){
-                if(!url.startsWith("http") && !url.startsWith("file") && !url.startsWith("ftp")){
-                    return "https://" + url;
-                }
-                return url
             }
         },
         components: {
@@ -55,12 +44,12 @@
         created: function () {
             if(this.$route.meta.checkPath === true){
                 const route = this.$route.fullPath.substr(1);
-                const url = this.withHttp(route);
-                if(this.validURL(url)){
-                    this.$store.dispatch("retrieveAPIData", url);
-                }else{
-                    this.$store.dispatch("getFromCode", route);
+                const url = withHttp(route);
+                if(validUrl(url)){
+                    return this.$store.dispatch("createShort", url);
                 }
+
+                this.$store.commit("display404")
             }
         },
     }

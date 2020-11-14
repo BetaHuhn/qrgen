@@ -4,41 +4,33 @@
             <h1><a class="link bold" style="color: #fff" href="https://qrgen.cc">QrGen.cc</a></h1>
             <p>Generate a QR-Code and Short Url</p>
         </div>
-        <div id="input-container" class="input-container noselect" v-bind:class="{ urlInvalidShake: inputInvalid }">
+        <div class="input-container noselect" :class="{ urlInvalidShake: inputInvalid }">
             <p class="input-label noselect">Enter a URL</p>
             <div class="center" data-children-count="1">
-                <input id="url" class="url-input" v-bind:class="{ inputInvalid: inputInvalid }" v-model="url" autocomplete="off" style="width: 12px;">
+                <input id="url" class="url-input" :class="{ inputInvalid: inputInvalid }" v-model="url" autocomplete="off" style="width: 12px;">
             </div>
         </div>
         <div class="main-button">
-            <button class="clean" v-on:click="render">CREATE</button>
+            <button class="clean" @click="create">CREATE</button>
         </div>
-        <p v-if="error" class="error">{{errorMsg}}</p>
+        <p v-if="error" class="error">{{ errorMsg }}</p>
     </div>
 </template>
 
 <script>
+    import validUrl from '@/utils/validUrl'
+    import withHttp from '@/utils/withHttp'
+
     export default {
         name: 'Form',
         methods: {
-            render: function () {
-                const url = this.withHttp(this.url);
-                if(this.validURL(url)){
-                    this.$store.dispatch("retrieveAPIData", url);
-                }else{
-                    this.$store.commit("inputInvalid");
+            create: function () {
+                const url = withHttp(this.url);
+                if(validUrl(url)){
+                    return this.$store.dispatch("createShort", url);
                 }
-            },
-            validURL: function(value){
-                const expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi
-                const regexp = new RegExp(expression);
-                return regexp.test(value);
-            },
-            withHttp: function(url){
-                if(!url.startsWith("http") && !url.startsWith("file") && !url.startsWith("ftp")){
-                    return "https://" + url;
-                }
-                return url
+
+                this.$store.commit("inputInvalid");
             }
         },
         computed:{
@@ -50,20 +42,14 @@
                     this.$store.dispatch('changeUrl', newUrl); 
                 }
             },
-            inputInvalid:{
-                get: function(){ 
-                    return this.$store.state.inputInvalid; 
-                }
+            inputInvalid: function(){ 
+                return this.$store.state.inputInvalid;
             },
-            error:{
-                get: function(){ 
-                    return this.$store.state.error; 
-                }
+            error: function(){ 
+                return this.$store.state.error;
             },
-            errorMsg:{
-                get: function(){ 
-                    return this.$store.state.errorMsg; 
-                }
+            errorMsg: function(){ 
+                return this.$store.state.errorMsg;
             }
         } 
 

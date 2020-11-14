@@ -3,7 +3,7 @@ import request from 'supertest';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
 import app from '../src/server';
-import Short from '../src/models/model';
+import Short from '../src/models/short';
 
 const mongod = new MongoMemoryServer();
 const test = anyTest as TestInterface<{ app: any }>;
@@ -24,13 +24,13 @@ test.serial('add short', async t => {
     const res = await request(app)
         .post('/api/create')
         .send({
-            url: 'https://google.de/test1'
+            url: 'https://google.de'
         });
     t.is(res.status, 200);
     const code = res.body.result.code;
     t.is(code.length, 5);
     const newShort = await Short.findOne({ code: code }) || { url: undefined };
-    t.is( newShort.url , 'https://google.de/test1');
+    t.is( newShort.url , 'https://google.de');
 });
 
 /* Get URL for added short by code */
@@ -40,7 +40,7 @@ test.serial('get short', async t => {
         _id: new mongoose.Types.ObjectId(),
         code: 'abcde',
         count: 0,
-        url: 'https://google.de/test',
+        url: 'https://google.de',
         addedAt: +new Date(),
       });
     await short.save();
@@ -48,7 +48,7 @@ test.serial('get short', async t => {
     const res = await request(app)
         .get('/api?code=abcde')
     t.is(res.status, 200);
-    t.is(res.body.result.url, 'https://google.de/test');
+    t.is(res.body.result.url, 'https://google.de');
 });
 
 /* Add same short again */
@@ -58,7 +58,7 @@ test.serial('add short - duplicate', async t => {
         _id: new mongoose.Types.ObjectId(),
         code: 'abcde',
         count: 0,
-        url: 'https://google.de/test',
+        url: 'https://google.de',
         addedAt: +new Date(),
       });
     await short.save();
@@ -66,7 +66,7 @@ test.serial('add short - duplicate', async t => {
     const res = await request(app)
         .post('/api/create')
         .send({
-            url: 'https://google.de/test'
+            url: 'https://google.de'
         });
     t.is(res.status, 200);
     const code = res.body.result.code;
@@ -102,12 +102,12 @@ test.serial('add short - with human readable code', async t => {
     const res = await request(app)
         .post('/api/create')
         .send({
-            url: 'https://google.de/test2',
+            url: 'https://google.de',
             human: true
         });
     t.is(res.status, 200);
     const code = res.body.result.code;
     t.is(code.includes('-'), true);
     const newShort = await Short.findOne({ code: code }) || { url: undefined };
-    t.is( newShort.url , 'https://google.de/test2');
+    t.is( newShort.url , 'https://google.de');
 });

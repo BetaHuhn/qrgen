@@ -13,7 +13,7 @@ export async function connectDatabase() {
   await mongoose
     .connect(url, options)
     .then(() => {
-      log.log("Database connection successfull");
+      log.info("Database connection successfull");
       return mongoose;
     })
     .catch((err) => {

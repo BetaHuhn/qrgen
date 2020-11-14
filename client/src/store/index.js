@@ -52,7 +52,7 @@ export default new Vuex.Store({
     }
   },
   actions:{
-    async retrieveAPIData ({ commit }, url) {
+    async createShort ({ commit }, url) {
       commit("displayLoading");
       const api = "/api/create"
       const options = {

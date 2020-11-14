@@ -106,7 +106,7 @@
     }
 </script>
 
-<style lang="scss">
+<style>
     #privacy .content {
         max-width: 800px;
         min-width: 300px;
@@ -120,12 +120,14 @@
         -o-animation: fadein 1s;
         animation: fadein 1s;
     }
- a{
-  text-decoration: none;
-  color: #60ddaf;
-  font-weight: 600;
-}
-h1{
-  text-align: center;
-}
+    
+    a {
+        text-decoration: none;
+        color: #60ddaf;
+        font-weight: 600;
+    }
+
+    h1 {
+        text-align: center;
+    }
 </style>
