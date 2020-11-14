@@ -21,6 +21,7 @@ router.get(
 	}),
 	async (req, res, next) => {
 		const code = <string>req.query.code;
+
 		try {
 			log.info(`Checking if short "${ code }" exists...`);
 			const short = await Short.findOne({ code: code });
@@ -71,8 +72,8 @@ router.post(
 			if (entry) {
 				log.warn("Entry already exists");
 				return sendResult(res, {
-				code: entry.code,
-				url: entry.url,
+					code: entry.code,
+					url: entry.url,
 				}, 200);
 			}
 			
