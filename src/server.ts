@@ -18,6 +18,16 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(compression())
 app.use(helmet())
+app.use(
+	helmet.contentSecurityPolicy({
+		directives: {
+			...helmet.contentSecurityPolicy.getDefaultDirectives(),
+			'connect-src': [ `'self'`, 'stats.mxis.ch' ],
+			'script-src': [ `'self'`, 'stats.mxis.ch', `'sha256-NGF/yVku8H6/Qf6cN7xZQ53TMOvSXoxbfFv1kgRw/L0='` ]
+		}
+	})
+)
+
 app.use((req, res, next) => {
 	res.setHeader('X-Powered-By', 'magic')
 	next()
