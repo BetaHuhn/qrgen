@@ -1,11 +1,11 @@
 name: Client
-
 on:
   push:
-    branches: [ master, develop ]
+    paths:
+      - 'client/*'
   pull_request:
-    branches: [ master, develop ]
-
+    paths:
+      - 'client/*'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,7 +17,8 @@ jobs:
         working-directory: ./client
         run: npm ci
       - name: Build Vue.js App
-        run: npm run client:build
+        working-directory: ./client
+        run: npm run build
   lint:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip-build]')"
@@ -28,4 +29,5 @@ jobs:
         working-directory: ./client
         run: npm ci
       - name: Run eslint
-        run: npm run client:lint
+        working-directory: ./client
+        run: npm run lint
