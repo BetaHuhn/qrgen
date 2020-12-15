@@ -111,7 +111,8 @@ router.get('*', async (req, res) => {
 			const data = {
 				url: short.url,
 				code: short.code,
-				title: short.title,
+				metaAvailable: short.title !== undefined,
+				title: short.title ? `${ short.title }` : 'Short URL by QrGen.cc',
 				provider: short.provider || short.url,
 				image: short.image || 'https://qrgen.cc/static/banner.png',
 				description: short.description ? `${ short.description } | URL shortened by QrGen.cc` : 'This URL was shortened by QrGen.cc, a free service that lets you create QR-Codes and shortened URLs from any link quickly and easily.'

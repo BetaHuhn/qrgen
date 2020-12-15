@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!--- Maximilian Schiller 2020 -->
+        <!--- Maximilian Schiller 2020 - https://github.com/BetaHuhn/qrgen/blob/master/LICENSE.md -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Redirecting - QrGen.cc</title>
-        <meta name="title" content="<%= title + ' | QrGen.cc' || 'URL shortened by QrGen.cc' %>">
+        <meta name="title" content="<%= title %>">
         <meta name="description" content="<%= description %>">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="<%= url %>">
-        <meta property="og:title" content="<%= title + ' | QrGen.cc' || 'URL shortened by QrGen.cc' %>">
+        <meta property="og:title" content="<%= title %>">
         <meta property="og:description" content="<%= description %>">
         <meta property="og:image" content="<%= image %>">
 
         <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:card" content="summary">
         <meta property="twitter:url" content="<%= url %>">
-        <meta property="twitter:title" content="<%= title + ' | QrGen.cc' || 'URL shortened by QrGen.cc' %>">
+        <meta property="twitter:title" content="<%= title %>">
         <meta property="twitter:description" content="<%= description %>">
         <meta property="twitter:image" content="<%= image %>">
 
@@ -170,7 +170,9 @@
             <main>
                 <div class="content">
                     <h1 class="logo"><a href="https://qrgen.cc">QrGen.cc</a> is redirecting you to:</h1>
-                    <h2 class="title"><%= title %></h2>
+                    <%if (metaAvailable === true) { %>
+                        <h2 class="title"><%= title %></h2>
+                    <% } %>
                     <a class="url" href="<%= url %>"><%= url %></a>
                 </div>
             </main>
