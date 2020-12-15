@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - handle case where metadata is missing for old link
 
+### Changed
+- update dependencies
+
 ## [v2.0.1] - 2020-12-08
 
 ### Changed
