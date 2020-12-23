@@ -3,10 +3,13 @@
 FROM mhart/alpine-node:14 AS build
 WORKDIR /usr/src/app
 
-# Add dependencies
+# Add backend dependencies
 
 COPY package*.json ./
 RUN npm ci
+
+COPY ./client/package*.json ./client
+RUN cd client && npm ci
 
 # Copy and compile the source
 
