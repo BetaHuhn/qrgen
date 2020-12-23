@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm ci
 
-COPY ./client/package*.json ./client
+COPY ./client/package*.json ./client/
 RUN cd client && npm ci
 
 # Copy and compile the source
