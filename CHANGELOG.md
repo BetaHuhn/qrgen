@@ -20,7 +20,7 @@
 (Issues: [`#47`](https://github.com/BetaHuhn/qrgen/issues/47))- [`ca7b10e`](https://github.com/BetaHuhn/qrgen/commit/ca7b10e)  Bump mongoose from 5.11.8 to 5.11.9 (#44)
 (Issues: [`#44`](https://github.com/BetaHuhn/qrgen/issues/44))
 
-## [v2.1.0] - 2020-12-23
+## [v2.0.3] - 2020-12-23
 
 ### Added
 - Dockerfile
