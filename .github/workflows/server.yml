@@ -1,9 +1,15 @@
 name: Server
-on: [push, pull_request]
+on:
+  push:
+    branches-ignore:
+      - master
+  pull_request:
+    branches-ignore:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[skip-build]')"
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
       - uses: actions/checkout@v2
       - uses: c-hive/gha-npm-cache@v1
@@ -13,7 +19,7 @@ jobs:
         run: npm run server:build
   test:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[skip-build]')"
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
       - uses: actions/checkout@v2
       - uses: c-hive/gha-npm-cache@v1
@@ -27,7 +33,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
   lint:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[skip-build]')"
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
       - uses: actions/checkout@v2
       - uses: c-hive/gha-npm-cache@v1
