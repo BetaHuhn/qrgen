@@ -4,8 +4,30 @@ on:
     branches:
       - master
 jobs:
+  client-build:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: c-hive/gha-npm-cache@v1
+      - name: Install dependencies
+        working-directory: ./client
+        run: npm ci
+      - name: Build Vue.js App
+        working-directory: ./client
+        run: npm run build
+  server-build:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: c-hive/gha-npm-cache@v1
+      - name: Install dependencies
+        run: npm ci
+      - name: Build Server
+        run: npm run server:build
   release:
-    name: Build, lint and release
+    needs: [client-build, server-build]
     runs-on: ubuntu-18.04
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
@@ -19,10 +41,6 @@ jobs:
         uses: c-hive/gha-npm-cache@v1
       - name: Install dependencies
         run: npm ci
-      - name: Build TypeScript
-        run: npm run build
-      - name: Run linter
-        run: npm run lint
       - name: Release
         run: npx semantic-release
         env:
