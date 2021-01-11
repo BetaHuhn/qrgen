@@ -1,3 +1,11 @@
+## [v2.1.1] - 2021-01-11
+
+[Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.1) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.0...v2.1.1) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.1) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.1.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.1.tar.gz))
+
+### Dependency updates
+
+- [`82a94d2`](https://github.com/BetaHuhn/qrgen/commit/82a94d2)  Bump core-js from 3.8.1 to 3.8.2 in /client
+
 ## [v2.1.0] - 2021-01-01
 
 [Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.0) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.0.0...v2.1.0) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.0) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.0.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.0.tar.gz))
