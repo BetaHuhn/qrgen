@@ -39,7 +39,7 @@
     "express": "^4.17.1",
     "express-rate-limit": "^5.2.3",
     "metadata-scraper": "^0.2.3",
-    "mongoose": "^5.11.11",
+    "mongoose": "^5.11.12",
     "nanoid": "^2.1.11",
     "request": "^2.88.2",
     "request-ip": "^2.1.3",
