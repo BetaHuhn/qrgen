@@ -1,3 +1,7 @@
+## [v2.1.2] - 2021-01-18
+
+[Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.2) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.1...v2.1.2) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.2) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.2.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.2.tar.gz))
+
 ## [v2.1.1] - 2021-01-11
 
 [Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.1) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.0...v2.1.1) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.1) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.1.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.1.tar.gz))
