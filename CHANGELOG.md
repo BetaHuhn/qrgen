@@ -1,3 +1,26 @@
+## [v2.1.4] - 2021-02-01
+
+[Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.4) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.3...v2.1.4) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.4) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.4.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.4.tar.gz))
+
+### Dependency updates
+
+- [`adfde8b`](https://github.com/BetaHuhn/qrgen/commit/adfde8b)  Bump @vue/cli-plugin-pwa from 4.5.10 to 4.5.11 in /client
+- [`1a29d61`](https://github.com/BetaHuhn/qrgen/commit/1a29d61)  Bump @vue/cli-plugin-babel from 4.5.10 to 4.5.11 in /client
+- [`f6d17ec`](https://github.com/BetaHuhn/qrgen/commit/f6d17ec)  Bump @vue/cli-plugin-vuex from 4.5.10 to 4.5.11 in /client
+- [`e0a434e`](https://github.com/BetaHuhn/qrgen/commit/e0a434e)  Bump metadata-scraper from 0.2.4 to 0.2.5
+- [`7dcd6e0`](https://github.com/BetaHuhn/qrgen/commit/7dcd6e0)  Bump running-at from 0.3.8 to 0.3.9
+- [`a4b118b`](https://github.com/BetaHuhn/qrgen/commit/a4b118b)  Bump supertest from 6.1.1 to 6.1.2
+- [`3a14a68`](https://github.com/BetaHuhn/qrgen/commit/3a14a68)  Bump @vue/cli-plugin-eslint from 4.5.10 to 4.5.11 in /client
+- [`73943e3`](https://github.com/BetaHuhn/qrgen/commit/73943e3)  Bump @vue/cli-service from 4.5.10 to 4.5.11 in /client
+- [`ce1b7fa`](https://github.com/BetaHuhn/qrgen/commit/ce1b7fa)  Bump @vue/cli-plugin-router from 4.5.10 to 4.5.11 in /client
+- [`966db50`](https://github.com/BetaHuhn/qrgen/commit/966db50)  Bump vue-router from 3.4.9 to 3.5.0 in /client
+- [`26f43de`](https://github.com/BetaHuhn/qrgen/commit/26f43de)  Bump supertest from 6.1.2 to 6.1.3
+- [`b0430d4`](https://github.com/BetaHuhn/qrgen/commit/b0430d4)  Bump @typescript-eslint/eslint-plugin from 4.14.0 to 4.14.1
+- [`057874b`](https://github.com/BetaHuhn/qrgen/commit/057874b)  Bump @typescript-eslint/parser from 4.14.0 to 4.14.1
+- [`5179380`](https://github.com/BetaHuhn/qrgen/commit/5179380)  Bump vue-router from 3.5.0 to 3.5.1 in /client
+- [`34987cf`](https://github.com/BetaHuhn/qrgen/commit/34987cf)  Bump vuex from 3.6.0 to 3.6.2 in /client
+- [`b831ec9`](https://github.com/BetaHuhn/qrgen/commit/b831ec9)  Bump mongoose from 5.11.13 to 5.11.14
+
 ## [v2.1.3] - 2021-01-25
 
 [Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.3) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.2...v2.1.3) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.3) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.3.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.3.tar.gz))
