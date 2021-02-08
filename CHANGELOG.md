@@ -1,3 +1,19 @@
+## [v2.1.5] - 2021-02-08
+
+[Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.5) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.4...v2.1.5) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.5) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.5.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.5.tar.gz))
+
+### Dependency updates
+
+- [`7c41c82`](https://github.com/BetaHuhn/qrgen/commit/7c41c82)  Bump metadata-scraper from 0.2.5 to 0.2.6
+- [`3c7ac6d`](https://github.com/BetaHuhn/qrgen/commit/3c7ac6d)  Bump eslint from 7.18.0 to 7.19.0
+- [`830a13b`](https://github.com/BetaHuhn/qrgen/commit/830a13b)  Bump @typescript-eslint/eslint-plugin from 4.14.1 to 4.14.2
+- [`8c4d300`](https://github.com/BetaHuhn/qrgen/commit/8c4d300)  Bump @typescript-eslint/parser from 4.14.1 to 4.14.2
+- [`b9cd5a4`](https://github.com/BetaHuhn/qrgen/commit/b9cd5a4)  Bump @babel/core from 7.12.10 to 7.12.13
+- [`016bd3c`](https://github.com/BetaHuhn/qrgen/commit/016bd3c)  Bump @babel/node from 7.12.10 to 7.12.13
+- [`84d76f0`](https://github.com/BetaHuhn/qrgen/commit/84d76f0)  Bump @types/node from 14.14.22 to 14.14.24
+- [`d6afcfa`](https://github.com/BetaHuhn/qrgen/commit/d6afcfa)  Bump mongoose from 5.11.14 to 5.11.15
+- [`5d9a5b6`](https://github.com/BetaHuhn/qrgen/commit/5d9a5b6)  Bump @types/node from 14.14.24 to 14.14.25
+
 ## [v2.1.4] - 2021-02-01
 
 [Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.4) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.3...v2.1.4) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.4) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.4.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.4.tar.gz))
