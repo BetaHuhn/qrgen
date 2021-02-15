@@ -1,3 +1,21 @@
+## [v2.1.6] - 2021-02-15
+
+[Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.6) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.5...v2.1.6) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.6) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.6.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.6.tar.gz))
+
+### Dependency updates
+
+- [`b3eef0b`](https://github.com/BetaHuhn/qrgen/commit/b3eef0b)  Bump ejs from 3.1.5 to 3.1.6
+- [`0c9e95d`](https://github.com/BetaHuhn/qrgen/commit/0c9e95d)  Bump running-at from 0.3.9 to 0.3.10
+- [`53f6e0b`](https://github.com/BetaHuhn/qrgen/commit/53f6e0b)  Bump metadata-scraper from 0.2.6 to 0.2.7
+- [`dcbe60a`](https://github.com/BetaHuhn/qrgen/commit/dcbe60a)  Bump @typescript-eslint/parser from 4.14.2 to 4.15.0
+- [`7573f50`](https://github.com/BetaHuhn/qrgen/commit/7573f50)  Bump express-rate-limit from 5.2.3 to 5.2.5
+- [`4820af6`](https://github.com/BetaHuhn/qrgen/commit/4820af6)  Bump @typescript-eslint/eslint-plugin from 4.14.2 to 4.15.0
+- [`1b0a1e3`](https://github.com/BetaHuhn/qrgen/commit/1b0a1e3)  Bump typescript from 4.1.3 to 4.1.4
+- [`80b0d58`](https://github.com/BetaHuhn/qrgen/commit/80b0d58)  Bump typescript from 4.1.4 to 4.1.5
+- [`b347732`](https://github.com/BetaHuhn/qrgen/commit/b347732)  Bump @babel/core from 7.12.13 to 7.12.16
+- [`4b22aca`](https://github.com/BetaHuhn/qrgen/commit/4b22aca)  Bump @types/node from 14.14.25 to 14.14.26
+- [`86637cf`](https://github.com/BetaHuhn/qrgen/commit/86637cf)  Bump @babel/node from 7.12.13 to 7.12.16
+
 ## [v2.1.5] - 2021-02-08
 
 [Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.5) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.4...v2.1.5) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.5) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.5.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.5.tar.gz))
