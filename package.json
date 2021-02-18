@@ -37,7 +37,7 @@
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "express-rate-limit": "^5.2.5",
+    "express-rate-limit": "^5.2.6",
     "metadata-scraper": "^0.2.8",
     "mongoose": "^5.11.16",
     "nanoid": "^2.1.11",
