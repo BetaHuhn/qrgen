@@ -1,3 +1,25 @@
+## [v2.1.7] - 2021-02-22
+
+[Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.7) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.6...v2.1.7) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.7) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.7.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.7.tar.gz))
+
+### Dependency updates
+
+- [`1b1e351`](https://github.com/BetaHuhn/qrgen/commit/1b1e351)  Bump @types/cors from 2.8.9 to 2.8.10
+- [`d69ae72`](https://github.com/BetaHuhn/qrgen/commit/d69ae72)  Bump mongoose from 5.11.15 to 5.11.16
+- [`35d77fb`](https://github.com/BetaHuhn/qrgen/commit/35d77fb)  Bump eslint from 7.19.0 to 7.20.0
+- [`9397387`](https://github.com/BetaHuhn/qrgen/commit/9397387)  Bump @types/node from 14.14.26 to 14.14.28
+- [`6badd11`](https://github.com/BetaHuhn/qrgen/commit/6badd11)  Bump eslint-plugin-vue from 7.5.0 to 7.6.0 in /client
+- [`a3bad00`](https://github.com/BetaHuhn/qrgen/commit/a3bad00)  Bump metadata-scraper from 0.2.7 to 0.2.8
+- [`b3b23f8`](https://github.com/BetaHuhn/qrgen/commit/b3b23f8)  Bump @typescript-eslint/parser from 4.15.0 to 4.15.1
+- [`e2057b5`](https://github.com/BetaHuhn/qrgen/commit/e2057b5)  Bump @types/ejs from 3.0.5 to 3.0.6
+- [`7fc2adc`](https://github.com/BetaHuhn/qrgen/commit/7fc2adc)  Bump @typescript-eslint/eslint-plugin from 4.15.0 to 4.15.1
+- [`e99d916`](https://github.com/BetaHuhn/qrgen/commit/e99d916)  Bump express-rate-limit from 5.2.5 to 5.2.6
+- [`f07ed7e`](https://github.com/BetaHuhn/qrgen/commit/f07ed7e)  Bump mongoose from 5.11.16 to 5.11.17
+- [`26731d1`](https://github.com/BetaHuhn/qrgen/commit/26731d1)  Bump core-js from 3.8.3 to 3.9.0 in /client
+- [`69eb615`](https://github.com/BetaHuhn/qrgen/commit/69eb615)  Bump @babel/core from 7.12.16 to 7.12.17
+- [`da78972`](https://github.com/BetaHuhn/qrgen/commit/da78972)  Bump @types/node from 14.14.28 to 14.14.30
+- [`6445bbd`](https://github.com/BetaHuhn/qrgen/commit/6445bbd)  Bump @babel/node from 7.12.16 to 7.12.17
+
 ## [v2.1.6] - 2021-02-15
 
 [Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.6) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.5...v2.1.6) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.6) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.6.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.6.tar.gz))
