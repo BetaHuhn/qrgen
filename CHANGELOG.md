@@ -1,3 +1,18 @@
+## [v2.1.9] - 2021-03-08
+
+[Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.9) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.8...v2.1.9) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.9) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.9.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.9.tar.gz))
+
+### Dependency updates
+
+- [`d248dca`](https://github.com/BetaHuhn/qrgen/commit/d248dca)  Bump core-js from 3.9.0 to 3.9.1 in /client
+- [`42ad084`](https://github.com/BetaHuhn/qrgen/commit/42ad084)  Bump eslint from 7.20.0 to 7.21.0
+- [`cdcc72a`](https://github.com/BetaHuhn/qrgen/commit/cdcc72a)  Bump @babel/core from 7.13.1 to 7.13.8
+- [`a87d45f`](https://github.com/BetaHuhn/qrgen/commit/a87d45f)  Bump metadata-scraper from 0.2.9 to 0.2.10
+- [`29e415b`](https://github.com/BetaHuhn/qrgen/commit/29e415b)  Bump @typescript-eslint/eslint-plugin from 4.15.2 to 4.16.1
+- [`0cf5afa`](https://github.com/BetaHuhn/qrgen/commit/0cf5afa)  Bump eslint-plugin-vue from 7.6.0 to 7.7.0 in /client
+- [`599b03c`](https://github.com/BetaHuhn/qrgen/commit/599b03c)  Bump @typescript-eslint/parser from 4.15.2 to 4.16.1
+- [`cf1cbd4`](https://github.com/BetaHuhn/qrgen/commit/cf1cbd4)  Bump typescript from 4.2.2 to 4.2.3
+
 ## [v2.1.8] - 2021-03-01
 
 [Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.8) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.7...v2.1.8) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.8) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.8.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.8.tar.gz))
