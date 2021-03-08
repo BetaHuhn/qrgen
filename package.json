@@ -38,7 +38,7 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-rate-limit": "^5.2.6",
-    "metadata-scraper": "^0.2.10",
+    "metadata-scraper": "^0.2.11",
     "mongoose": "^5.11.19",
     "nanoid": "^2.1.11",
     "request": "^2.88.2",
