@@ -1,3 +1,27 @@
+## [v2.1.11] - 2021-03-22
+
+[Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.11) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.10...v2.1.11) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.11) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.11.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.11.tar.gz))
+
+### Dependency updates
+
+- [`df706fc`](https://github.com/BetaHuhn/qrgen/commit/df706fc)  Bump @babel/core from 7.13.8 to 7.13.10
+- [`6a61cfe`](https://github.com/BetaHuhn/qrgen/commit/6a61cfe)  Bump mongodb-memory-server from 6.9.3 to 6.9.6
+- [`fa4cd95`](https://github.com/BetaHuhn/qrgen/commit/fa4cd95)  Bump elliptic from 6.5.3 to 6.5.4 in /client
+- [`d57f43e`](https://github.com/BetaHuhn/qrgen/commit/d57f43e)  Bump metadata-scraper from 0.2.10 to 0.2.13
+- [`7204cb4`](https://github.com/BetaHuhn/qrgen/commit/7204cb4)  Bump @typescript-eslint/parser from 4.16.1 to 4.18.0
+- [`4ab9c93`](https://github.com/BetaHuhn/qrgen/commit/4ab9c93)  Bump @vue/cli-plugin-vuex from 4.5.11 to 4.5.12 in /client
+- [`f7d83f9`](https://github.com/BetaHuhn/qrgen/commit/f7d83f9)  Bump @vue/cli-plugin-pwa from 4.5.11 to 4.5.12 in /client
+- [`7a90d23`](https://github.com/BetaHuhn/qrgen/commit/7a90d23)  Bump @vue/cli-service from 4.5.11 to 4.5.12 in /client
+- [`ccc5182`](https://github.com/BetaHuhn/qrgen/commit/ccc5182)  Bump @vue/cli-plugin-babel from 4.5.11 to 4.5.12 in /client
+- [`edbf9eb`](https://github.com/BetaHuhn/qrgen/commit/edbf9eb)  Bump @typescript-eslint/eslint-plugin from 4.16.1 to 4.18.0
+- [`c16e389`](https://github.com/BetaHuhn/qrgen/commit/c16e389)  Bump eslint from 7.21.0 to 7.22.0 (#174)
+(Issues: [`#174`](https://github.com/BetaHuhn/qrgen/issues/174))- [`8522178`](https://github.com/BetaHuhn/qrgen/commit/8522178)  Bump mongoose from 5.11.19 to 5.12.1 (#175)
+(Issues: [`#175`](https://github.com/BetaHuhn/qrgen/issues/175))- [`6913430`](https://github.com/BetaHuhn/qrgen/commit/6913430)  Bump @types/node from 14.14.32 to 14.14.35 (#173)
+(Issues: [`#173`](https://github.com/BetaHuhn/qrgen/issues/173))- [`baa1832`](https://github.com/BetaHuhn/qrgen/commit/baa1832)  Bump @vue/cli-plugin-eslint from 4.5.11 to 4.5.12 in /client (#176)
+(Issues: [`#176`](https://github.com/BetaHuhn/qrgen/issues/176))- [`8362f65`](https://github.com/BetaHuhn/qrgen/commit/8362f65)  Bump @babel/node from 7.13.0 to 7.13.10 (#177)
+(Issues: [`#177`](https://github.com/BetaHuhn/qrgen/issues/177))- [`6032f2e`](https://github.com/BetaHuhn/qrgen/commit/6032f2e)  Bump @vue/cli-plugin-router from 4.5.11 to 4.5.12 in /client (#178)
+(Issues: [`#178`](https://github.com/BetaHuhn/qrgen/issues/178))
+
 ## [v2.1.10] - 2021-03-15
 
 [Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.10) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.9...v2.1.10) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.10) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.10.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.10.tar.gz))
