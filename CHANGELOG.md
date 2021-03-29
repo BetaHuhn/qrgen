@@ -1,3 +1,17 @@
+## [v2.1.12] - 2021-03-29
+
+[Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.12) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.11...v2.1.12) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.12) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.12.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.12.tar.gz))
+
+### Dependency updates
+
+- [`f8e15f2`](https://github.com/BetaHuhn/qrgen/commit/f8e15f2)  Bump metadata-scraper from 0.2.13 to 0.2.14
+- [`5cc72df`](https://github.com/BetaHuhn/qrgen/commit/5cc72df)  Bump running-at from 0.3.12 to 0.3.13
+- [`77a8d64`](https://github.com/BetaHuhn/qrgen/commit/77a8d64)  Bump eslint-plugin-vue from 7.7.0 to 7.8.0 in /client
+- [`f5c638b`](https://github.com/BetaHuhn/qrgen/commit/f5c638b)  Bump @typescript-eslint/parser from 4.18.0 to 4.19.0
+- [`12c5041`](https://github.com/BetaHuhn/qrgen/commit/12c5041)  Bump @babel/node from 7.13.10 to 7.13.12
+- [`89bb5fa`](https://github.com/BetaHuhn/qrgen/commit/89bb5fa)  Bump @typescript-eslint/eslint-plugin from 4.18.0 to 4.19.0
+- [`3f8dc52`](https://github.com/BetaHuhn/qrgen/commit/3f8dc52)  Bump @types/node from 14.14.35 to 14.14.36
+
 ## [v2.1.11] - 2021-03-22
 
 [Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.11) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.10...v2.1.11) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.11) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.11.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.11.tar.gz))
