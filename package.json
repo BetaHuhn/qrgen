@@ -30,7 +30,7 @@
   "homepage": "https://qrgen.cc",
   "license": "MIT",
   "dependencies": {
-    "@dotvirus/yxc": "0.0.6",
+    "@dotvirus/yxc": "2.0.3",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "debug": "^4.3.1",
