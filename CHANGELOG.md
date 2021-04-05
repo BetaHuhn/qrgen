@@ -1,3 +1,22 @@
+## [v2.1.13] - 2021-04-05
+
+[Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.13) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.12...v2.1.13) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.13) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.13.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.13.tar.gz))
+
+### Dependency updates
+
+- [`4e17f24`](https://github.com/BetaHuhn/qrgen/commit/4e17f24)  Bump metadata-scraper from 0.2.14 to 0.2.15
+- [`4d29abc`](https://github.com/BetaHuhn/qrgen/commit/4d29abc)  Bump @types/node from 14.14.36 to 14.14.37
+- [`08183f5`](https://github.com/BetaHuhn/qrgen/commit/08183f5)  Bump mongoose from 5.12.1 to 5.12.2
+- [`0b92afc`](https://github.com/BetaHuhn/qrgen/commit/0b92afc)  Bump @babel/node from 7.13.12 to 7.13.13
+- [`7ed156b`](https://github.com/BetaHuhn/qrgen/commit/7ed156b)  Bump eslint from 7.22.0 to 7.23.0
+- [`4a13aa0`](https://github.com/BetaHuhn/qrgen/commit/4a13aa0)  Bump @typescript-eslint/parser from 4.19.0 to 4.20.0
+- [`d9e3449`](https://github.com/BetaHuhn/qrgen/commit/d9e3449)  Bump @types/supertest from 2.0.10 to 2.0.11
+- [`dd0f78f`](https://github.com/BetaHuhn/qrgen/commit/dd0f78f)  Bump @babel/core from 7.13.10 to 7.13.14
+- [`8ce0d20`](https://github.com/BetaHuhn/qrgen/commit/8ce0d20)  Bump @typescript-eslint/eslint-plugin from 4.19.0 to 4.20.0
+- [`37bd27a`](https://github.com/BetaHuhn/qrgen/commit/37bd27a)  Bump y18n from 4.0.0 to 4.0.1 in /client
+- [`a740431`](https://github.com/BetaHuhn/qrgen/commit/a740431)  Bump core-js from 3.9.1 to 3.10.0 in /client
+- [`16995c4`](https://github.com/BetaHuhn/qrgen/commit/16995c4)  Bump mongoose from 5.12.2 to 5.12.3
+
 ## [v2.1.12] - 2021-03-29
 
 [Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.12) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.11...v2.1.12) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.12) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.12.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.12.tar.gz))
