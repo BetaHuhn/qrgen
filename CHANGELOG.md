@@ -1,3 +1,15 @@
+## [v2.2.0] - 2021-04-12
+
+[Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.2.0) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.14...v2.2.0) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.2.0) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.2.0.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.2.0.tar.gz))
+
+### New features
+
+- [`6360f99`](https://github.com/BetaHuhn/qrgen/commit/6360f99)  Add vercel config and support for serverless functions
+
+### Updates
+
+- [`53434f2`](https://github.com/BetaHuhn/qrgen/commit/53434f2)  Combine frontend and backend
+
 ## [v2.1.14] - 2021-04-12
 
 [Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.1.14) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.13...v2.1.14) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.1.14) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.1.14.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.1.14.tar.gz))
