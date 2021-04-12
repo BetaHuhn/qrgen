@@ -1,3 +1,11 @@
+## [v2.3.0] - 2021-04-12
+
+[Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.3.0) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.2.0...v2.3.0) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.3.0) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.3.0.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.3.0.tar.gz))
+
+### New features
+
+- [`291f06a`](https://github.com/BetaHuhn/qrgen/commit/291f06a)  Set cache headers
+
 ## [v2.2.0] - 2021-04-12
 
 [Release notes](https://github.com/BetaHuhn/qrgen/releases/tag/v2.2.0) · [Compare](https://github.com/BetaHuhn/qrgen/compare/v2.1.14...v2.2.0) · [Tag](https://github.com/BetaHuhn/qrgen/tree/v2.2.0) · Archive ([zip](https://github.com/BetaHuhn/qrgen/archive/v2.2.0.zip) · [tar.gz](https://github.com/BetaHuhn/qrgen/archive/v2.2.0.tar.gz))
