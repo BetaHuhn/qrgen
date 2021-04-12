@@ -1,0 +1,14 @@
+{
+    "routes": [
+        { "handle": "filesystem" },
+        { "src": "/(.*)", "dest": "/api/index.js" }
+    ],
+    "functions": {
+        "api/index.js": {
+          "includeFiles": "build/**"
+        }
+    },
+    "github": {
+        "enabled": false
+    }
+}
