@@ -10,6 +10,8 @@ import status from '../utils/status'
 import log from '../utils/log'
 const router = express.Router()
 
+const CACHE_TIME = 60 * 60 * 10; // 10 hours
+
 router.get(
 	'/api/',
 	limit,
@@ -118,6 +120,7 @@ router.get('*', async (req, res) => {
 			}
 
 			log.info(`Redirecting to ${ short.url.slice(0, 60) }...`)
+			res.setHeader('Cache-Control', `max-age=15, s-max-age=${ CACHE_TIME }, stale-while-revalidate, public`)
 			return res.render('redirect.ejs', data)
 		}
 

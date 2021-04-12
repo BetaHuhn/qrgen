@@ -25,6 +25,7 @@ export const init = () => {
 
 	app.use((req, res, next) => {
 		res.setHeader('Content-Security-Policy', `script-src 'self' stats.mxis.ch 'unsafe-inline'; connect-src 'self' stats.mxis.ch; script-src-attr 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; default-src 'self'; block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;`)
+		res.setHeader('X-Powered-By', 'magic')
 		next()
 	})
 
