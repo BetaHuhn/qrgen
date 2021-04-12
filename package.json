@@ -1,6 +1,6 @@
 {
   "name": "qrgen",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "QrGen.cc is a free service that lets you create QR-Codes and shortened URLs from any link quickly and easily",
   "main": "build/index.js",
   "scripts": {
