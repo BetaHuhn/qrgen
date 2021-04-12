@@ -64,7 +64,7 @@ router.post(
 	}),
 	async (req, res, next) => {
 		try {
-			const url: string = req.body.url
+			const url: string = new URL(req.body.url).toString()
 
 			log.info(`Checking if "${ url }" exists...`)
 			const entry = await Short.findOne({ url: url })
