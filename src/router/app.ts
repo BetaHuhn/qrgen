@@ -1,5 +1,4 @@
 import express from 'express'
-import ejs from 'ejs'
 import fs from 'fs'
 import yxc, { connect } from '@dotvirus/yxc'
 import createShort from '../service/createShort'
@@ -93,7 +92,7 @@ router.post(
 router.get('*', async (req, res) => {
 	const code = req.originalUrl.replace(/^\/+/, '')
 	if (!code) {
-		const html = fs.readFileSync('./client/dist/main.html', 'utf8')
+		const html = fs.readFileSync('./build/dist/index.html', 'utf8')
 		return res.send(html)
 	}
 
@@ -119,8 +118,7 @@ router.get('*', async (req, res) => {
 			}
 
 			log.info(`Redirecting to ${ short.url.slice(0, 60) }...`)
-			const html = await ejs.renderFile('./src/views/redirect.ejs', data)
-			return res.send(html)
+			return res.render('redirect.ejs', data)
 		}
 
 		log.warn('No short found')
@@ -128,7 +126,7 @@ router.get('*', async (req, res) => {
 		log.fatal(err)
 	}
 
-	const html = fs.readFileSync('./client/dist/main.html', 'utf8')
+	const html = fs.readFileSync('./build/dist/index.html', 'utf8')
 	res.send(html)
 })
 

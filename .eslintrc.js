@@ -8,8 +8,12 @@ module.exports = {
     ],
     extends: [
         "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:vue/recommended"
     ],
+    parserOptions: {
+        "parser": "babel-eslint"
+    },
     rules: {
         "@typescript-eslint/no-explicit-any": 0,
         "@typescript-eslint/explicit-module-boundary-types": 0,

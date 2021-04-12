@@ -7,3 +7,5 @@ logs
 .nyc_output
 coverage/
 .coveralls.yml
+
+.vercel

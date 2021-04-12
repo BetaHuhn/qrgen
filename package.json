@@ -4,20 +4,18 @@
   "description": "QrGen.cc is a free service that lets you create QR-Codes and shortened URLs from any link quickly and easily",
   "main": "build/index.js",
   "scripts": {
-    "client:serve": "cd client && npx vue-cli-service serve",
-    "client:build": "cd client && npx vue-cli-service build",
-    "client:lint": "cd client && npx vue-cli-service lint",
+    "client:serve": "vue-cli-service serve src/ui/main.js",
+    "client:build": "vue-cli-service build src/ui/main.js --dest build/dist",
+    "client:lint": "vue-cli-service lint src/ui/",
     "server:dev": "./node_modules/.bin/tsc-watch --onSuccess \"nodemon ./build/index.js\"",
-    "server:build": "tsc -p tsconfig.json",
+    "server:build": "tsc -p tsconfig.json && npm run copy-views",
     "server:lint": "eslint ./src/ --ext .ts",
-    "dependencies": "npm install && cd client && npm install",
     "build": "npm run server:build && npm run client:build",
+    "copy-views": "mkdir -p ./build/views && cp -a ./src/views/. ./build/views/",
     "start": "node ./build/index.js",
     "lint": "npm run server:lint && npm run client:lint",
     "test": "nyc --reporter=html --reporter=text ava --verbose",
-    "coverage": "nyc --reporter=lcov ava",
-    "semantic-release": "semantic-release",
-    "pm2": "sudo pm2 start ./build/index.js --name qrgen.cc"
+    "coverage": "nyc --reporter=lcov ava"
   },
   "author": "Maximilian Schiller <schiller@mxis.ch>",
   "repository": {
@@ -45,7 +43,14 @@
     "request-ip": "^2.1.3",
     "running-at": "^0.3.14",
     "signale": "^1.4.0",
-    "url-exists-deep": "^2.0.6"
+    "url-exists-deep": "^2.0.6",
+    "core-js": "^3.10.1",
+    "qrcode": "^1.4.4",
+    "register-service-worker": "^1.7.2",
+    "vue": "^2.6.11",
+    "vue-qrcode": "^0.3.5",
+    "vue-router": "^3.5.1",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",
@@ -74,7 +79,17 @@
     "ts-node": "^9.1.1",
     "tsc-watch": "^4.2.8",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "@betahuhn/eslint-config-node": "^0.1.1",
+    "@vue/cli-plugin-babel": "~4.5.12",
+    "@vue/cli-plugin-eslint": "~4.5.12",
+    "@vue/cli-plugin-pwa": "^4.5.12",
+    "@vue/cli-plugin-router": "^4.5.12",
+    "@vue/cli-plugin-vuex": "^4.5.12",
+    "@vue/cli-service": "~4.5.12",
+    "babel-eslint": "^10.1.0",
+    "eslint-plugin-vue": "^7.8.0",
+    "vue-template-compiler": "^2.6.11"
   },
   "ava": {
     "extensions": [
@@ -84,5 +99,10 @@
       "ts-node/register",
       "tsconfig-paths/register"
     ]
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }

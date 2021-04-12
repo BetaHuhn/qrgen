@@ -1,6 +1,5 @@
-import app from './server'
+import { init } from './server'
 import log from './utils/log'
-import { connectDatabase } from './database'
 import { print as runningAt } from 'running-at'
 
 /**
@@ -8,7 +7,7 @@ import { print as runningAt } from 'running-at'
  */
 async function startServer() {
 	try {
-		await connectDatabase()
+		const app = init()
 		const PORT = process.env.PORT || 3000
 		app.listen(PORT, () => runningAt(PORT))
 	} catch (error) {
