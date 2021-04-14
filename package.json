@@ -55,7 +55,7 @@
   "devDependencies": {
     "@babel/core": "^7.13.15",
     "@babel/node": "^7.13.13",
-    "@betahuhn/config": "^1.0.2",
+    "@betahuhn/config": "^1.1.0",
     "@types/compression": "^1.7.0",
     "@types/cors": "^2.8.10",
     "@types/debug": "^4.1.5",
