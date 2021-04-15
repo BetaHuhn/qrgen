@@ -13,6 +13,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - uses: c-hive/gha-npm-cache@v1
+      - name: Install dependencies
+        run: npm ci
+      - name: Build files
+        run: npm run build
       - name: Deploy to Vercel Action
         uses: BetaHuhn/deploy-to-vercel-action@v1
         with:
