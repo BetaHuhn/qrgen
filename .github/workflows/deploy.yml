@@ -19,7 +19,7 @@ jobs:
       - name: Build files
         run: npm run build
       - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@v1
+        uses: BetaHuhn/deploy-to-vercel-action@v1.3.3
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
